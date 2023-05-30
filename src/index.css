@@ -1,13 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
 .container {
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: clamp(30px, 30vw, 100px);
+  padding-inline: 100px;
 }
 
 .form-container {
@@ -26,7 +28,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 70%;
+  width: 90vw;
+  max-width: 600px;
   border-radius: 20px;
   min-width: 280px;
   position: absolute;
@@ -39,9 +42,8 @@
   color: white;
   border: none;
   background-color: transparent;
-  padding: 10px 20px;
+  padding-block: 10px;
   flex: 1;
-  border-radius: 5px;
   font-size: 18px;
 }
 
@@ -59,14 +61,54 @@
   border: 2px solid white;
   display: flex;
   gap: 10px;
+  border-radius: 5px;
+  padding-inline: 13px;
   margin-block: 30px;
+  align-items: center;
+}
+.input-icons-div img,
+.input-icons-div svg {
+  width: 35px;
+  height: 35px;
 }
 .form-div button {
   color: white;
   width: 100%;
+  font-weight: bold;
   border-radius: 5px;
-  background-color: brown;
+  background-color: #f35300;
   padding: 15px;
   border: none;
   margin-bottom: 30px;
+  cursor: pointer;
+}
+.form-div span {
+  color: #f35300;
+  font-weight: bold;
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding-inline: 35px;
+  }
+  .form-div input {
+    font-size: 15px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    padding-inline: 20px;
+  }
+  .form-div input {
+    font-size: 13.5px;
+  }
+  .input-icons-div img,
+  .input-icons-div svg {
+    width: 25px;
+    height: 25px;
+  }
+  .input-icons-div {
+    padding-inline: 5px;
+    gap: 5px;
+  }
 }
