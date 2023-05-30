@@ -1,0 +1,25 @@
+.main-image {
+    background-image: url("./image/first.jpeg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: calc(100vh - 1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .tell {
+    /* padding: 0 0 0 40px; */
+    text-align: left;
+    font-weight: bold;
+    font-size: 40px;
+    color: #fff;
+  }
+  .bord {
+    /* border-bottom: 3px solid rgb(255, 149, 10); */
+    width: 170px;
+  }
+  .tell {
+    font-weight: 300;
+    font-size: 22px;
+  }
