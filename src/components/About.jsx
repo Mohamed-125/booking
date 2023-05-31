@@ -42,6 +42,10 @@ const About = () => {
                 <h4>Best Service</h4>
               </div>
               <div className="col text-center icon">
+                <img src={group} className="cardImg" alt='group' />
+                <h4>Team of professionals</h4>
+              </div>
+              <div className="col text-center icon">
                 <img
                   src={discount}
                   className="cardImg"
@@ -57,6 +61,7 @@ const About = () => {
                 <img src={group} className="cardImg" alt='group' />
                 <h4>Team of professionals</h4>
               </div>
+              
             </div>
           </div>
         </div>
