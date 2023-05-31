@@ -1,29 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import touraxios from "../enviroment/config/axiosinstance"
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import touraxios from "../enviroment/config/axiosinstance";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import "./Tour.css"
+import "./Tour.css";
 
 import { EffectCoverflow, Pagination } from "swiper";
 const Tour = () => {
-const [product,setProduct] =useState()
+  const [products, setProducts] = useState([]);
 
-useEffect(() => {
-  const getUsers = async () => {
-    await touraxios.get('/api/v1/tours')
-    .then(response => response.json())
-    .then(data => setProduct(data.message))
-};
-console.log(getUsers);
-},[])
+  useEffect(() => {
+    touraxios
+      .get("/api/v1/tours")
+      .then((response) => setProducts(response.data.data));
+  }, []);
+
+  useEffect(() => {
+    console.log(products);
+  }, [products]);
   return (
     <>
       <Swiper
@@ -42,34 +43,7 @@ console.log(getUsers);
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        
-       
-       
-          <SwiperSlide>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                sx={{ height: 140 }}
-                image="https://swiperjs.com/demos/images/nature-1.jpg"
-                title="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Lizard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000
-                  species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-              </CardActions>
-            </Card>
-          </SwiperSlide>
-
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -81,8 +55,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -93,7 +67,6 @@ console.log(getUsers);
         </SwiperSlide>
 
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -105,8 +78,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -115,8 +88,8 @@ console.log(getUsers);
             </CardActions>
           </Card>
         </SwiperSlide>
-        <SwiperSlide>
 
+        <SwiperSlide>
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -128,8 +101,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -139,7 +112,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -151,8 +123,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -162,7 +134,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -174,8 +145,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -185,7 +156,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -197,8 +167,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -208,7 +178,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -220,8 +189,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -231,7 +200,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -243,8 +211,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -254,7 +222,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -266,8 +233,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -277,7 +244,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -289,8 +255,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -300,7 +266,6 @@ console.log(getUsers);
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
@@ -312,8 +277,8 @@ console.log(getUsers);
                 Lizard
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -322,11 +287,31 @@ console.log(getUsers);
             </CardActions>
           </Card>
         </SwiperSlide>
-
-
+        <SwiperSlide>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              sx={{ height: 140 }}
+              image="https://swiperjs.com/demos/images/nature-1.jpg"
+              title="green iguana"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Lizard
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Share</Button>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </SwiperSlide>
       </Swiper>
     </>
-  )
-}
+  );
+};
 
-export default Tour
+export default Tour;
