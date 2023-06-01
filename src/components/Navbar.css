@@ -25,12 +25,11 @@
 }
 
 .sign {
-  width: 136px;
   margin: 0px 22px;
 }
 .nav-link {
-  width: 100px;
   margin: auto;
+  padding: 10px 12px;
   color: #804518 !important;
 }
 a.router-link-active.router-link-exact-active.nav-link {

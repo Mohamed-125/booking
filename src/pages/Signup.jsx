@@ -3,19 +3,44 @@ import emailIcon from "../assests/email.png";
 import avatarIcon from "../assests/avatar.png";
 import locationIcon from "../assests/location.png";
 import lockIcon from "../assests/padlock.png";
-import { BsEye } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import { registerUser } from "../firebase-cofing";
+import { useNavigate, Link } from "react-router-dom";
+import { auth } from "../firebase-cofing";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import "./Form.css";
+
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [location, setLocation] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(userEmail, password);
-    registerUser(userEmail, password);
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        userEmail,
+        password
+      );
+      navigate("/login");
+    } catch (err) {
+      console.log(err.message);
+
+      switch (err.message) {
+        case "Firebase: Error (auth/email-already-in-use).":
+          alert("email already in use");
+          break;
+        case "Firebase: Password should be at least 6 characters (auth/weak-password)":
+          alert("Password should be at least 6 characters");
+          break;
+        case "Firebase: Error (auth/invalid-email).":
+          alert("invalid email");
+          break;
+        default:
+          break;
+      }
+    }
   };
 
   return (
@@ -29,7 +54,7 @@ const Signup = () => {
               type="text"
               required
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="heeeey"
+              placeholder="Username"
             />
           </div>
 
@@ -39,7 +64,7 @@ const Signup = () => {
               type="email"
               required
               onChange={(e) => setUserEmail(e.target.value)}
-              placeholder="heeeey"
+              placeholder="Email"
             />
           </div>
           <div className="input-icons-div  ">
@@ -48,7 +73,7 @@ const Signup = () => {
               type="password"
               required
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="heeeey"
+              placeholder="Password"
             />
           </div>
           <div className="input-icons-div  ">
@@ -57,7 +82,7 @@ const Signup = () => {
               type="text"
               required
               onChange={(e) => setLocation(e.target.value)}
-              placeholder="heeeey"
+              placeholder="Location"
             />
           </div>
           <div className="form-checkbox-div ">

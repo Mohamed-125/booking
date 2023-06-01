@@ -21,97 +21,34 @@ a {
   padding-inline: 100px;
 }
 
-.form-container {
-  background-image: url("./assests/WhatsApp\ Image\ 2022-11-16\ at\ 4.07.50\ AM.png");
-  min-height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
+.loader {
+  width: 58px;
+  height: 58px;
+  border: 6px solid #000000;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
-.form-div {
-  text-align: center;
-  padding: 30px 80px;
-  background-color: rgba(255, 255, 255, 0.232);
-  color: white;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 90vw;
-  max-width: 600px;
-  border-radius: 20px;
-  min-width: 280px;
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+div:has(.loader) {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.form-div input {
-  color: white;
-  border: none;
-  background-color: transparent;
-  padding-block: 10px;
-  flex: 1;
-  font-size: 18px;
-}
-
-.form-div input:focus-visible {
-  outline: none;
-  border: none;
-}
-
-.form-div input::placeholder {
-  color: white;
-  font-size: 18px;
-}
-
-.input-icons-div {
-  border: 2px solid white;
+  inset: 0;
   display: flex;
-  gap: 13px;
-  border-radius: 5px;
-  padding-inline: 13px;
-  margin-block: 30px;
+  justify-content: center;
   align-items: center;
-}
-
-.input-icons-div img,
-.input-icons-div svg {
-  width: 27px;
-  height: 27px;
-}
-
-.form-div button {
-  color: white;
-  width: 100%;
-  font-weight: bold;
-  border-radius: 5px;
-  background-color: #f35300;
-  padding: 15px;
-  border: none;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.form-div span {
-  color: #f35300;
-  font-weight: bold;
-}
-
-.form-checkbox-div {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-  align-items: center;
-  margin-block: 20px;
-  font-size: 16px;
-}
-
-.form-checkbox-div input {
-  flex: none;
-  width: 17px;
-  height: 17px;
+  background-color: white;
+  z-index: 1000;
 }
 
 @media (max-width: 960px) {

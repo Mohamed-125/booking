@@ -4,8 +4,9 @@ import hideIcon from "../assests/hide.png";
 import lockIcon from "../assests/padlock.png";
 import { BsEye } from "react-icons/bs";
 import { useNavigate, Link } from "react-router-dom";
-import { login, logout, auth } from "../firebase-cofing";
+import { auth } from "../firebase-cofing";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import "./Form.css";
 
 const Login = () => {
   const passwordInputRef = useRef();
@@ -52,7 +53,6 @@ const Login = () => {
 
   return (
     <div className="form-container">
-      <button onClick={logout}>signOut</button>
       <div className="form-div container">
         <form onSubmit={submitHandler}>
           <h2>Login</h2>
@@ -60,7 +60,7 @@ const Login = () => {
             <img src={emailIcon} alt="" />
             <input
               type="email"
-              placeholder="heeeey"
+              placeholder="Email"
               required
               onChange={(e) => setUserEmail(e.target.value)}
             />
@@ -69,7 +69,7 @@ const Login = () => {
             <img src={lockIcon} alt="" />
             <input
               type="password"
-              placeholder="heeeey"
+              placeholder="Password"
               required
               ref={passwordInputRef}
               onChange={(e) => setPassword(e.target.value)}
@@ -90,16 +90,16 @@ const Login = () => {
           </div>
           <div></div>
           <button>Submit</button>
-          <p>
+          <p style={{ paddingBottom: "10px" }}>
             Don't have an account ?
             <span>
               <Link to={"/sign-up"}> Sign Up</Link>
             </span>
           </p>
           <p>
-            Did you forget your password
+            Did you forget your password ?
             <span>
-              <Link to={"/reset-password"}>Reset your password</Link>
+              <Link to={"/reset-password"}> Reset your password</Link>
             </span>
           </p>
         </form>

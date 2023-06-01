@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Grid, Radio, RadioGroup, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
@@ -10,10 +10,14 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import FlightTakeoffOutlinedIcon from "@mui/icons-material/FlightTakeoffOutlined";
 import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlined";
 import "./Flight.css";
+import { userContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Flight = () => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
+  const { user } = useContext(userContext);
+  const navigate = useNavigate();
 
   //increase counter
   const increase = () => {
@@ -103,12 +107,18 @@ const Flight = () => {
                 </LocalizationProvider>
                 {/* end LocalizationProvider */}
               </Grid>
-              <NavLink
-                to="/flightTour"
-                className="btn d-block search-trip-btn mt-5 mx-auto bg"
+              <button
+                onClick={() => {
+                  if (!user) {
+                    alert("you must login in to search for flights");
+                  } else {
+                    navigate("/flightTour");
+                  }
+                }}
+                className="btn d-block mt-5 mx-auto bg search-trip-btn  "
               >
                 Search for Flight
-              </NavLink>
+              </button>
             </div>
           ) : (
             <div className=" pb-5 rounded-end rounded-bottom">
@@ -173,12 +183,18 @@ const Flight = () => {
                 {/* end LocalizationProvider */}
               </Grid>
 
-              <NavLink
-                to="/bustTour"
-                className="btn d-block mt-5 mx-auto bg search-trip-btn text-light"
+              <button
+                onClick={() => {
+                  if (!user) {
+                    alert("you must login in to search for trips");
+                  } else {
+                    navigate("/bustTour");
+                  }
+                }}
+                className="btn d-block mt-5 mx-auto bg search-trip-btn  "
               >
                 Search for Trip
-              </NavLink>
+              </button>
             </div>
           )}
         </div>
