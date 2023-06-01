@@ -15,10 +15,10 @@ a {
   text-decoration: none;
 }
 
-.container {
-  /* max-width: 1200px; */
+.Container {
+  max-width: 1260px;
   margin-inline: auto;
-  /* padding-inline: 100px; */
+  padding-inline: 100px;
 }
 
 .form-container {
@@ -114,8 +114,14 @@ a {
   height: 17px;
 }
 
+@media (max-width: 960px) {
+  .Container {
+    padding-inline: 45px;
+  }
+}
+
 @media (max-width: 760px) {
-  .container {
+  .Container {
     padding-inline: 35px;
   }
 
@@ -129,7 +135,7 @@ a {
   }
 }
 @media (max-width: 400px) {
-  .container {
+  .Container {
     padding-inline: 20px;
   }
 

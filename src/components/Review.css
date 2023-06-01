@@ -1,6 +1,3 @@
-.reviews {
-  padding: 40px 0px;
-}
 .name {
   margin: 0px;
   text-align: start;
@@ -50,8 +47,6 @@
   padding: 0 8px;
   font-size: 27px;
 }
-.person {
-}
 
 @media (max-width: 760px) {
   .person {
@@ -60,6 +55,11 @@
   }
   .place {
     display: flex;
+    justify-content: center;
+  }
+  .MuiBox-root {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 }
@@ -131,15 +131,13 @@
 /* ---------------------------- */
 
 .swiper {
-  width: 60%;
+  width: 100%;
   height: 100%;
   background-color: #aaaaaa2b;
 }
-@media (min-width: 375) {
-  .swiper {
-    width: 100%;
-    height: 100%;
-    background-color: #aaaaaa2b;
+@media (max-width: 475) {
+  .feedback {
+    font-size: 16px;
   }
 }
 
@@ -147,7 +145,7 @@
   text-align: center;
   font-size: 18px;
   background: #f1f1f1;
-
+  padding: 30px;
   /* Center slide text vertically */
   display: flex;
   justify-content: center;

@@ -1,83 +1,82 @@
-  .navbar {
-    background-color: #d3977500 !important ;
-    color: #804518  ;
-    position: absolute ;
-    width: 100%;
-    font-size: 21px;
-    font-weight: 600;
-  }
-  .logo {
-    width: 40px;
-    width: 40px;
-  }
-  .form-control {
-    background-color: #ffffff52 ;
-    border-radius: 50px;
-  }
-  .nav-item{
-    color: #804518;
-  }
-  .nav-link:focus,
-  .nav-link:hover,
-  .nav-item .active {
-    color: #804518 ;
-    border-bottom: 2px solid #804518;
-  }
-  
-  .sign {
-    width: 136px;
-    margin: 0px 22px;
-  }
-  .nav-link {
-    width: 100px;
-    margin: auto;
-    color: #804518 !important;
-  }
-  a.router-link-active.router-link-exact-active.nav-link {
-    border-bottom: 2px solid #804518;
-    color: #804518  ;
-    width: 100px;
-    margin: auto;
-  }
-  .about {
-    margin-top: 35px;
-    padding: 70px 0px;
-  }
-  .special-heading {
-    font-size: 30px;
-    color: #8f4d1b;
-    padding-bottom: 10px;
-  }
-  .content p {
-    text-align: center;
-  }
-  .mt {
-    margin-top: -10px;
-  }
-  .content hr {
-    width: 70%;
-    height: 2px;
-    color: #341414;
-    margin: 40px auto 20px;
-  }
-  .icon {
-    width: 100px !important;
-  }
-  .icon h4 {
-    font-size: 15px !important;
-    margin-top: 15px;
-  }
-  .cent {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 1vw;
-    justify-items: center;
-  }
-  .cardImg {
-    width: 60%;
-  }
-  
+.navbar {
+  background-color: #e2a07c !important ;
+  color: #804518;
+  position: absolute;
+  width: 100%;
+  font-size: 21px;
+  font-weight: 600;
+}
+.logo {
+  width: 40px;
+  width: 40px;
+}
+.form-control {
+  background-color: #ffffff52;
+  border-radius: 50px;
+}
+.nav-item {
+  color: #804518;
+}
+.nav-link:focus,
+.nav-link:hover,
+.nav-item .active {
+  color: #804518;
+  border-bottom: 2px solid #804518;
+}
 
-  .lang{
-    background-color: #804518;
-  }
+.sign {
+  width: 136px;
+  margin: 0px 22px;
+}
+.nav-link {
+  width: 100px;
+  margin: auto;
+  color: #804518 !important;
+}
+a.router-link-active.router-link-exact-active.nav-link {
+  border-bottom: 2px solid #804518;
+  color: #804518;
+  width: 100px;
+  margin: auto;
+}
+.about {
+  margin-top: 35px;
+  padding: 70px 0px;
+}
+.special-heading {
+  font-size: 30px;
+  color: #8f4d1b;
+  padding-bottom: 10px;
+}
+.content p {
+  text-align: center;
+}
+.mt {
+  margin-top: -10px;
+}
+.content hr {
+  width: 70%;
+  height: 2px;
+  color: #341414;
+  margin: 40px auto 20px;
+}
+.icon {
+  width: 100px !important;
+}
+.icon h4 {
+  font-size: 15px !important;
+  margin-top: 15px;
+}
+.cent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1vw;
+  justify-items: center;
+}
+.cardImg {
+  width: 60%;
+}
+
+.lang {
+  background-color: #804518;
+}

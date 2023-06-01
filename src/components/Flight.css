@@ -1,0 +1,85 @@
+.containerflight h3 {
+  text-align: left;
+}
+.flightransport {
+  width: 7%;
+  height: 100%;
+}
+.transpornat {
+  cursor: pointer;
+}
+.radiogroup {
+  display: flex;
+  flex-direction: row;
+}
+.transpornat-options-div {
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.transpornat-options-div div {
+  background-color: #804518;
+  width: max-content;
+  color: white;
+  padding: 5px 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.flights-div {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-direction: row !important;
+}
+
+.flights-grid {
+  display: grid;
+  gap: 10px;
+  align-items: end;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.flights-grid div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.ticket-counter {
+  height: 100%;
+}
+.ticket-counter button {
+  padding: 10px 20px;
+  height: 100%;
+  color: white;
+  background-color: #f35300;
+  border-radius: 5px;
+  border: none;
+  margin-inline: 10px;
+}
+
+.search-trip-btn {
+  padding: 10px 40px;
+  background-color: #f35300;
+  border-radius: 10px;
+  color: white !important;
+  max-width: 400px;
+}
+
+@media (max-width: 774px) {
+  .transpornat-options-div {
+    justify-content: center;
+  }
+
+  .special-heading {
+    text-align: center !important;
+  }
+  .flights-div {
+    justify-content: center;
+  }
+}

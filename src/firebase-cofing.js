@@ -46,26 +46,7 @@ export const registerUser = async (email, password) => {
     console.log(err.message);
   }
 };
-export const login = async (email, password) => {
-  try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-  } catch (err) {
-    switch (err.message) {
-      case "Firebase: Error (auth/wrong-password).":
-        alert("wrong password");
-        break;
-      case "Firebase: Error (auth/user-not-found).":
-        alert("There is not account with this email");
-        break;
-      case "Firebase: Error (auth/invalid-email).":
-        alert("invalid email");
-        break;
-      default:
-        break;
-    }
-    console.log(err.message);
-  }
-};
+
 export const logout = async () => {
   signOut(auth);
 };

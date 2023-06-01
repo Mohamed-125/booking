@@ -1,4 +1,32 @@
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.image {
+  width: 100%;
+  border-radius: 5px;
+  max-width: 500px;
+}
+.tour-container {
+  margin-bottom: 30px;
+}
 
-  .image{
+@media (max-width: 774px) {
+  .tour-container > div > div {
+    flex-direction: column-reverse;
+    gap: 30px;
+    align-items: center;
+    margin-block: 20px;
+  }
+  .tour-container div > div * {
+    text-align: center !important;
+    padding: 0 !important;
+  }
+  .col-4 {
+    flex: 0;
     width: 100%;
   }
+  .col-8 {
+    width: 100%;
+  }
+}

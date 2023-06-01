@@ -1,28 +1,53 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import emailIcon from "../assests/email.png";
 import hideIcon from "../assests/hide.png";
 import lockIcon from "../assests/padlock.png";
 import { BsEye } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import { login, logout } from "../firebase-cofing";
+import { useNavigate, Link } from "react-router-dom";
+import { login, logout, auth } from "../firebase-cofing";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 const Login = () => {
   const passwordInputRef = useRef();
   const [showPassWord, setShowPassword] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const showOrHidePassword = () => {
     setShowPassword((pre) => !pre);
+  };
+
+  useEffect(() => {
     if (showPassWord) {
       passwordInputRef.current.type = "text";
     } else {
       passwordInputRef.current.type = "password";
     }
-  };
+  }, [showPassWord]);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    login(userEmail, password);
+
+    try {
+      const user = await signInWithEmailAndPassword(auth, userEmail, password);
+      navigate("/");
+    } catch (err) {
+      switch (err.message) {
+        case "Firebase: Error (auth/wrong-password).":
+          alert("wrong password");
+          break;
+        case "Firebase: Error (auth/user-not-found).":
+          alert("There is not account with this email");
+          break;
+        case "Firebase: Error (auth/invalid-email).":
+          alert("invalid email");
+          break;
+        default:
+          break;
+      }
+      console.log(err.message);
+    }
   };
 
   return (
@@ -32,7 +57,7 @@ const Login = () => {
         <form onSubmit={submitHandler}>
           <h2>Login</h2>
           <div className="input-icons-div  ">
-            <img src={emailIcon} />
+            <img src={emailIcon} alt="" />
             <input
               type="email"
               placeholder="heeeey"
@@ -41,7 +66,7 @@ const Login = () => {
             />
           </div>
           <div className="input-icons-div  ">
-            <img src={lockIcon} />
+            <img src={lockIcon} alt="" />
             <input
               type="password"
               placeholder="heeeey"
@@ -49,11 +74,12 @@ const Login = () => {
               ref={passwordInputRef}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {showPassWord ? (
+            {!showPassWord ? (
               <img
                 src={hideIcon}
                 style={{ cursor: "pointer" }}
                 onClick={showOrHidePassword}
+                alt=""
               />
             ) : (
               <BsEye
