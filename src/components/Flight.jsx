@@ -2,7 +2,7 @@ import React from 'react'
 
 const Flight = () => {
   return (
-    <div>Flight</div>
+    <div id='flight'>Flight</div>
   )
 }
 

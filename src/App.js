@@ -14,6 +14,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-cofing.js";
 import { userContext } from "./context/UserContext.js";
 import { useContext } from "react";
+import ResetPassword from "./pages/ResetPassword";
 function App() {
   const { setUser } = useContext(userContext);
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpass" element={<Forgetpass />} />
         <Route path="/sign-up" element={<Signup />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </div>
   );

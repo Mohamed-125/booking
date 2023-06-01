@@ -24,6 +24,7 @@ const Login = () => {
     e.preventDefault();
     login(userEmail, password);
   };
+
   return (
     <div className="form-container">
       <button onClick={logout}>signOut</button>
@@ -67,6 +68,12 @@ const Login = () => {
             Don't have an account ?
             <span>
               <Link to={"/sign-up"}> Sign Up</Link>
+            </span>
+          </p>
+          <p>
+            Did you forget your password
+            <span>
+              <Link to={"/reset-password"}>Reset your password</Link>
             </span>
           </p>
         </form>

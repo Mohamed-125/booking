@@ -9,21 +9,27 @@ import pexels from "./image/city/pexels-rachel-claire-4577718.jpg";
 import simon from "./image/city/simon-berger-boyXZfqpwpU-unsplash.jpg";
 import siwa from "./image/city/siwa.jpg";
 import template from "./image/city/temple.jpg";
-
 import "./Tour.css";
 
-// import { EffectCoverflow, Pagination } from "swiper";
 const Tour = () => {
-  const [product, setProduct] = useState();
+  // when to use make fetching api
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const getUsers = async () => {
-      await touraxios
-        .get("/api/v1/tours")
-        .then((response) => response.json())
-        .then((data) => setProduct(data.message));
-    };
-  }, []);
+  // useEffect(() => {
+  //   touraxios
+  //     .get("/api/v1/tours")
+  //     .then((response) => setProducts(response.data.data));
+  // }, []);
+  // const [product, setProduct] = useState()
+
+  // useEffect(() => {
+  //   const getUsers = async () => {
+  //     await touraxios.get('/api/v1/tours')
+  //       .then(response => response.json())
+  //       .then(data => setProduct(data.message))
+  //   };
+  // }, [])
+
   return (
     <div className="container" id="tour">
       <h3 className="special-heading">Tour</h3>
@@ -160,3 +166,293 @@ const Tour = () => {
 };
 
 export default Tour;
+
+//     <>
+//       <Swiper
+//         effect={"coverflow"}
+//         grabCursor={true}
+//         centeredSlides={true}
+//         slidesPerView={"auto"}
+//         coverflowEffect={{
+//           rotate: 50,
+//           stretch: 0,
+//           depth: 100,
+//           modifier: 1,
+//           slideShadows: true,
+//         }}
+//         pagination={true}
+//         modules={[EffectCoverflow, Pagination]}
+//         className="mySwiper"
+//       >
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//         <SwiperSlide>
+//           <Card sx={{ maxWidth: 345 }}>
+//             <CardMedia
+//               sx={{ height: 140 }}
+//               image="https://swiperjs.com/demos/images/nature-1.jpg"
+//               title="green iguana"
+//             />
+//             <CardContent>
+//               <Typography gutterBottom variant="h5" component="div">
+//                 Lizard
+//               </Typography>
+//               <Typography variant="body2" color="text.secondary">
+//                 Lizards are a widespread group of squamate reptiles, with over
+//                 6,000 species, ranging across all continents except Antarctica
+//               </Typography>
+//             </CardContent>
+//             <CardActions>
+//               <Button size="small">Share</Button>
+//               <Button size="small">Learn More</Button>
+//             </CardActions>
+//           </Card>
+//         </SwiperSlide>
+//       </Swiper>
+//     </>
+//   );
+// };
+
+// export default Tour;

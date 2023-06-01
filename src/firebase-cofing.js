@@ -37,7 +37,9 @@ export const registerUser = async (email, password) => {
       case "Firebase: Password should be at least 6 characters (auth/weak-password)":
         alert("Password should be at least 6 characters");
         break;
-
+      case "Firebase: Error (auth/invalid-email).":
+        alert("invalid email");
+        break;
       default:
         break;
     }
@@ -55,7 +57,9 @@ export const login = async (email, password) => {
       case "Firebase: Error (auth/user-not-found).":
         alert("There is not account with this email");
         break;
-
+      case "Firebase: Error (auth/invalid-email).":
+        alert("invalid email");
+        break;
       default:
         break;
     }
