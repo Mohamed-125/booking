@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import emailIcon from "../assests/email.png";
 import { auth } from "../firebase-cofing";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -35,7 +35,7 @@ const ResetPassword = () => {
         <form onSubmit={submitHandler}>
           <h2>Send Email to your account to reset your password</h2>
           <div className="input-icons-div  ">
-            <img src={emailIcon} />
+            <img src={emailIcon} alt="" />
             <input
               type="email"
               placeholder="Enter your email"
