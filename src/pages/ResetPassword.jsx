@@ -3,6 +3,7 @@ import emailIcon from "../assests/email.png";
 import { auth } from "../firebase-cofing";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router";
+import "./Form.css";
 
 const ResetPassword = () => {
   const [resetEmail, setResetEmail] = useState("");

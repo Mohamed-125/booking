@@ -1,5 +1,5 @@
+import { useContext, useState } from "react";
 import { Route, Routes } from "react-router";
-import "./App.css";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -12,19 +12,23 @@ import Forgetpass from "./pages/Forgetpass";
 import Signup from "./pages/Signup";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-cofing.js";
-import { userContext } from "./context/UserContext.js";
-import { useContext } from "react";
+import { userContext } from "./context/UserContext.jsx";
 import ResetPassword from "./pages/ResetPassword";
-
 function App() {
   const { setUser } = useContext(userContext);
-
+  const [loading, setLoading] = useState(true);
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
+    setLoading(false);
   });
 
   return (
     <div className="App">
+      {loading && (
+        <div>
+          <span className="loader"></span>
+        </div>
+      )}
       <Routes>
         <Route
           path="/"

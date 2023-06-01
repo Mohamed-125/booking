@@ -1,12 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,27 +19,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-export const registerUser = async (email, password) => {
-  try {
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-  } catch (err) {
-    switch (err.message) {
-      case "Firebase: Error (auth/email-already-in-use).":
-        alert("email already in use");
-        break;
-      case "Firebase: Password should be at least 6 characters (auth/weak-password)":
-        alert("Password should be at least 6 characters");
-        break;
-      case "Firebase: Error (auth/invalid-email).":
-        alert("invalid email");
-        break;
-      default:
-        break;
-    }
-    console.log(err.message);
-  }
-};
 
 export const logout = async () => {
   signOut(auth);
