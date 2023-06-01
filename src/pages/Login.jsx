@@ -31,7 +31,7 @@ const Login = () => {
         <form onSubmit={submitHandler}>
           <h2>Login</h2>
           <div className="input-icons-div  ">
-            <img src={emailIcon} />
+            <img src={emailIcon} alt="" />
             <input
               type="email"
               placeholder="heeeey"
@@ -40,7 +40,7 @@ const Login = () => {
             />
           </div>
           <div className="input-icons-div  ">
-            <img src={lockIcon} />
+            <img src={lockIcon} alt="" />
             <input
               type="password"
               placeholder="heeeey"
@@ -53,6 +53,7 @@ const Login = () => {
                 src={hideIcon}
                 style={{ cursor: "pointer" }}
                 onClick={showOrHidePassword}
+                alt=""
               />
             ) : (
               <BsEye

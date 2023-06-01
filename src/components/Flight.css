@@ -1,0 +1,12 @@
+.flightransport{
+width: 7%;
+height: 100%;
+}
+.transpornat {
+    cursor: pointer;
+}
+
+.radiogroup{
+display: flex;
+flex-direction: row;
+}
