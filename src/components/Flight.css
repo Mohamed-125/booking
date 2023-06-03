@@ -1,6 +1,16 @@
+.containerflight{
+  background-image: url(./image/city/aswan.jpg);
+  width: 100% !important;
+  margin: 0;
+  max-width: initial;
+}
 .containerflight h3 {
   text-align: left;
 }
+/* .content{
+  background-color: white;
+  border-radius: 5px;
+} */
 .flightransport {
   width: 7%;
   height: 100%;
@@ -13,21 +23,30 @@
   flex-direction: row;
 }
 .transpornat-options-div {
+  border-radius: 4px;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: -2px;
 }
 .transpornat-options-div div {
-  background-color: #804518;
   width: max-content;
-  color: white;
-  padding: 5px 30px;
+  color: black;
+  padding: 9px 30px;
   display: flex;
   gap: 10px;
   align-items: center;
   margin-top: 20px;
-  border-radius: 10px;
+  border-radius: 2px;
   margin-right: 20px;
+  background-color: #cecece;
+}
+.transpornat-options-div div :active{
+  background-color: #fff3f3;
+}
+.sec-destion{
+  background-color: #fff3f3;
+  border-radius: 3px;
+  padding: 0 16 !important;
 }
 
 .flights-div {
@@ -83,3 +102,5 @@
     justify-content: center;
   }
 }
+
+
