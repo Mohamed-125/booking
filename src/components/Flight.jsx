@@ -12,6 +12,12 @@ import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlin
 import "./Flight.css";
 import { userContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+import PlaceIcon from '@mui/icons-material/Place';
+import Box from '@mui/material/Box';
+import MultipleSelect from "./MultipleSelect";
+import ControlledOpenSelect from "./OneSelect";
+import AddIcon from '@mui/icons-material/Add';
 
 const Flight = () => {
   const [flight, setflight] = useState(true);
@@ -32,9 +38,9 @@ const Flight = () => {
   };
 
   return (
-    <div className="containerflight Container">
+    <div className="Container containerflight ">
       <div className="flight" id="flight">
-        <h3 className="special-heading text-dark">Flight with us</h3>
+        <h3 className="special-heading text-light">Flight with us</h3>
         <div className="content">
           <div className=" transpornat-options-div d-flex ">
             <div
@@ -57,7 +63,7 @@ const Flight = () => {
             </div>
           </div>
           {flight ? (
-            <div className="pb-5">
+            <div className="pb-5 sec-destion">
               <RadioGroup
                 className="radiogroup flights-div"
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -74,16 +80,18 @@ const Flight = () => {
                   control={<Radio />}
                   label="One-way Flight"
                 />
-                <FormControlLabel
-                  value="multicity"
-                  control={<Radio />}
-                  label="Multi-City Flight"
-                />
               </RadioGroup>
+              
               <Grid className="grid flights-grid text-center ">
-                <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
+                <Box>
+                <PlaceIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="input-with-sx" label="Coming From" variant="standard" />
+                </Box>
+                <Box>
+                <PlaceIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="input-with-sx" label="Coming To" variant="standard" />
+                </Box>
+                <ControlledOpenSelect/>
                 <Grouped className="d-flex" />
 
                 {/* start LocalizationProvider */}
@@ -121,7 +129,7 @@ const Flight = () => {
               </button>
             </div>
           ) : (
-            <div className=" pb-5 rounded-end rounded-bottom">
+            <div className=" pb-5 rounded-end rounded-bottom sec-destion">
               <div className="chexs">
                 <RadioGroup
                   className="radiogroup flights-div"
@@ -141,10 +149,32 @@ const Flight = () => {
                   />
                 </RadioGroup>
               </div>
-              <Grid className="grid flights-grid text-center ">
-                <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
 
+              <Grid className="grid flights-grid text-center ">
+                <Box>
+                <PlaceIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="input-with-sx" label="Coming From" variant="standard" />
+                </Box>
+                <Box>
+                <PlaceIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="input-with-sx" label="Coming To" variant="standard" />
+                </Box>
+                <div
+                  style={{
+                    alignSelf: "center",
+                    width: "fit-content",
+                  }}
+                >
+                  <div className="ticket-counter">
+                    <button className="control__btn" onClick={increase}>
+                      <AddIcon/>
+                    </button>
+                    <span className="counter__output">{counter}</span>
+                    <button className="control__btn" onClick={decrease}>
+                      -
+                    </button>
+                  </div>
+                </div>
                 {/* start LocalizationProvider */}
                 <LocalizationProvider
                   className="d-flex"
@@ -159,28 +189,13 @@ const Flight = () => {
                 <LocalizationProvider
                   className="d-flex"
                   dateAdapter={AdapterDayjs}
-                >
+                  >
                   <DemoContainer components={["DatePicker"]}>
                     <DatePicker label="Returning Date" />
                   </DemoContainer>
                 </LocalizationProvider>
-                <div
-                  style={{
-                    alignSelf: "center",
-                    width: "fit-content",
-                  }}
-                >
-                  <div className="ticket-counter">
-                    <button className="control__btn" onClick={increase}>
-                      +
-                    </button>
-                    <span className="counter__output">{counter}</span>
-                    <button className="control__btn" onClick={decrease}>
-                      -
-                    </button>
-                  </div>
-                </div>
                 {/* end LocalizationProvider */}
+                
               </Grid>
 
               <button
@@ -200,6 +215,7 @@ const Flight = () => {
         </div>
         <hr />
       </div>
+
     </div>
   );
 };
