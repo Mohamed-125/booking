@@ -1,0 +1,132 @@
+.tourlist-container {
+  background-image: url("../assests/reservationConfirmBackground.png");
+  min-height: 100vh;
+}
+
+.tourlist-options-div {
+  background-color: white;
+  padding: 40px 30px;
+  display: flex;
+  gap: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 90vh;
+  width: 90vw;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  overflow: auto;
+  transform: translate(-50%, -50%);
+}
+
+.tourlist-options {
+  width: 23%;
+  border: 1px solid var(--gray-color);
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.tourlist-options > div > div {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.tourlist-options > div {
+  padding: 20px;
+}
+
+.tourlist-options > div h4 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.tourlist-options > div:last-child {
+  border-top: 1px solid var(--gray-color);
+}
+
+.tourlist-options div input {
+  width: 14px;
+  height: 14px;
+}
+
+.tourlist-options div span {
+  font-size: 16px;
+  margin-left: 6px;
+}
+
+.tourlist-departure-trips,
+.tourlist-arrival-trips {
+  border: 1px solid var(--gray-color);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.tourlist-trips {
+  flex: 1;
+  height: fit-content;
+}
+
+.tourlist-div {
+  display: flex;
+  gap: 3.5px;
+  font-size: clamp(12px, 2vw, 14px);
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--gray-color);
+  overflow: hidden;
+  background-color: gainsboro;
+  margin-bottom: 15px;
+}
+
+.tourlist-div > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding-block: 10px;
+}
+
+.tourlist-div > div:first-child {
+  width: 150px;
+}
+
+.tourlist-div > div:first-child > img:first-child {
+  width: 50px;
+}
+
+.tourlist-div > div:first-child > div > img {
+  width: 22px;
+}
+
+.tourlist-div > div:nth-child(2) {
+  max-width: 155px;
+}
+.tourlist-div > div:nth-child(3) {
+  max-width: 75px;
+}
+
+.tourlist-div > div:nth-child(4) {
+  max-width: 75px;
+  text-align: center;
+}
+
+.tourlist-div > div:nth-child(5) {
+  max-width: 100px;
+}
+
+.tourlist-div > div:last-child {
+  max-width: 120px;
+  color: orange;
+  cursor: pointer;
+}
+
+.tourlist-div > div p {
+  margin-bottom: 5px;
+}
+.tourlist-div .tourlist-features-div {
+  display: flex;
+  gap: 7px;
+}

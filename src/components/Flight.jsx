@@ -1,7 +1,14 @@
 import React, { useState, useContext } from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { Grid, Radio, RadioGroup, Stack } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import {
+  Grid,
+  InputLabel,
+  Radio,
+  RadioGroup,
+  Select,
+  MenuItem,
+  FormControl,
+} from "@mui/material";
 import Grouped from "./Grouped";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -16,6 +23,9 @@ import { useNavigate } from "react-router-dom";
 const Flight = () => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
+  const [levelValue, setLevelValue] = useState("");
+  const [activeCard, setActiveCard] = useState(1);
+
   const { user } = useContext(userContext);
   const navigate = useNavigate();
 
@@ -31,33 +41,45 @@ const Flight = () => {
     }
   };
 
+  // select value change handler
+  const handleChange = (e) => {
+    setLevelValue(e.target.value);
+  };
   return (
-    <div className="containerflight Container">
-      <div className="flight" id="flight">
+    <div className="containerflight ">
+      <div className="flight Container" id="flight">
         <h3 className="special-heading text-dark">Flight with us</h3>
-        <div className="content">
-          <div className=" transpornat-options-div d-flex ">
-            <div
-              className={`transpornat col-2 ${flight ? "active" : ""}`}
-              onClick={() => {
-                setflight(true);
-              }}
-            >
-              <FlightTakeoffOutlinedIcon />
-              Tour with Flight
-            </div>
-            <div
-              className={`transpornat ${flight ? "" : "active"}`}
-              onClick={() => {
-                setflight(false);
-              }}
-            >
-              <AirportShuttleOutlinedIcon />
-              Tour with Bus
-            </div>
+        <div className="choose-tour-or-flight">
+          <div
+            onClick={() => {
+              setActiveCard(1);
+              setflight(true);
+            }}
+            style={
+              activeCard === 2
+                ? { backgroundColor: "#F2F2F2" }
+                : { backgroundColor: "white" }
+            }
+          >
+            <h3> Tour with Flight</h3>
           </div>
+          <div
+            onClick={() => {
+              setActiveCard(2);
+              setflight(false);
+            }}
+            style={
+              activeCard === 1
+                ? { backgroundColor: "#F2F2F2" }
+                : { backgroundColor: "white" }
+            }
+          >
+            <h3> Tour with Bus</h3>
+          </div>
+        </div>
+        <div className="content">
           {flight ? (
-            <div className="pb-5">
+            <div className="py-3">
               <RadioGroup
                 className="radiogroup flights-div"
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -84,8 +106,22 @@ const Flight = () => {
                 <Grouped className="d-flex" />
                 <Grouped className="d-flex" />
                 <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
-
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Class</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Class"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={"first class"}>First Class</MenuItem>
+                    <MenuItem value={"Premium Economy"}>
+                      Premium Economy
+                    </MenuItem>
+                    <MenuItem value={"Business"}>Business </MenuItem>
+                    <MenuItem value={"Economy"}>Economy </MenuItem>
+                  </Select>
+                </FormControl>
                 {/* start LocalizationProvider */}
                 <LocalizationProvider
                   className="d-flex"
@@ -112,7 +148,7 @@ const Flight = () => {
                   if (!user) {
                     alert("you must login in to search for flights");
                   } else {
-                    navigate("/flightTour");
+                    navigate("/flights-list");
                   }
                 }}
                 className="btn d-block mt-5 mx-auto bg search-trip-btn  "
@@ -121,7 +157,7 @@ const Flight = () => {
               </button>
             </div>
           ) : (
-            <div className=" pb-5 rounded-end rounded-bottom">
+            <div className="py-3 rounded-end rounded-bottom">
               <div className="chexs">
                 <RadioGroup
                   className="radiogroup flights-div"
@@ -188,7 +224,7 @@ const Flight = () => {
                   if (!user) {
                     alert("you must login in to search for trips");
                   } else {
-                    navigate("/bustTour");
+                    navigate("/tour-list");
                   }
                 }}
                 className="btn d-block mt-5 mx-auto bg search-trip-btn  "

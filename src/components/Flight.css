@@ -1,5 +1,13 @@
+.containerflight {
+  background-image: url("../assests/reservationConfirmBackground.png");
+}
 .containerflight h3 {
+  margin-bottom: 0px !important;
+}
+.containerflight > div > h3 {
   text-align: left;
+  color: white !important;
+  padding-top: 20px;
 }
 .flightransport {
   width: 7%;
@@ -16,6 +24,13 @@
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
+}
+.content {
+  background-color: white;
+  padding-inline: 30px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  border-top-left-radius: 0px;
 }
 .transpornat-options-div div {
   background-color: #804518;
@@ -41,14 +56,18 @@
   display: grid;
   gap: 10px;
   align-items: end;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(max(100% / 4, 240px), 1fr));
 }
-
+.MuiInputBase-root.MuiOutlinedInput-root {
+  background-color: rgb(242, 242, 242);
+}
 .flights-grid div {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: end;
+  border: none;
+  outline: none;
 }
 .ticket-counter {
   height: 100%;
@@ -71,6 +90,33 @@
   max-width: 400px;
 }
 
+.choose-tour-or-flight {
+  display: flex;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.choose-tour-or-flight div {
+  background-color: white;
+  height: 65px;
+  display: flex;
+  color: black !important;
+  align-items: center;
+  padding-inline: 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.choose-tour-or-flight h3 {
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.css-hyxlzm {
+  /* accent-color: red !important; */
+  color: black;
+}
 @media (max-width: 774px) {
   .transpornat-options-div {
     justify-content: center;
@@ -81,5 +127,15 @@
   }
   .flights-div {
     justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .choose-tour-or-flight div {
+    height: 60px;
+    font-size: 20px;
+  }
+  .choose-tour-or-flight h3 {
+    font-size: 14px !important;
   }
 }

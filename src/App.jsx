@@ -14,6 +14,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase-cofing.js";
 import { userContext } from "./context/UserContext.jsx";
 import ResetPassword from "./pages/ResetPassword";
+import ReservationConfirm from "./pages/ReservationConfirm";
+import TourList from "./pages/TourList";
+import FlightsList from "./pages/FlightsList";
+
 function App() {
   const { setUser } = useContext(userContext);
   const [loading, setLoading] = useState(true);
@@ -48,6 +52,9 @@ function App() {
         <Route path="/forgetpass" element={<Forgetpass />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/confirm-reservation" element={<ReservationConfirm />} />
+        <Route path="/tour-list" element={<TourList />} />
+        <Route path="/flights-list" element={<FlightsList />} />
       </Routes>
     </div>
   );

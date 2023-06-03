@@ -1,0 +1,88 @@
+.reservation-confirm-container {
+  background-image: url("../assests/reservationConfirmBackground.png");
+  background-size: cover;
+  /* background-position: center; */
+  /* background-color: aqua; */
+  min-height: 100vh;
+  padding-bottom: 20px;
+}
+
+.reservation-confirm-options {
+  display: flex;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.reservation-confirm-options div {
+  background-color: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding-inline: 30px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.reservation-confirm-options div h3 {
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.reservation-confirm-div {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top-left-radius: 0px;
+}
+
+.reservation-confirm-div:not(.reservation-confirm-div:first-child) {
+  margin-top: 20px;
+  border-top-left-radius: 10px;
+}
+
+.reservaton-ticket-confirm-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.reservaton-ticket-confirm-row > div {
+  display: flex;
+  border: 1.5px solid #707070;
+  border-radius: 10px;
+  background-color: #707070;
+  gap: 1.5px;
+  flex: 1;
+  min-width: 240px;
+  overflow: hidden;
+}
+.reservaton-ticket-confirm-row > div:last-child {
+  justify-content: center;
+  text-align: center;
+}
+.reservaton-ticket-confirm-row > div:last-child > div {
+  padding-inline: 0;
+}
+
+.reservaton-ticket-confirm-row > div > div {
+  flex: 1;
+  padding-block: 10px;
+  padding-inline: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+.reservaton-ticket-confirm-row > div > div p {
+  margin-bottom: 5px;
+}
+.reservaton-ticket-confirm-row > div > div p:first-child {
+  font-size: small;
+}
+.reservaton-ticket-confirm-row > div > div p:last-child {
+  font-size: small;
+}
