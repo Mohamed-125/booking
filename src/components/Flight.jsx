@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import {
   Grid,
@@ -19,15 +19,23 @@ import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlin
 import "./Flight.css";
 import { userContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { flightDataFilter } from "../context/FlightDataFilter";
+import axios from "axios";
 
 const Flight = () => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
   const [levelValue, setLevelValue] = useState("");
   const [activeCard, setActiveCard] = useState(1);
-
+  const [tours, setTours] = useState([]);
+  const [countries, setCountries] = useState([]);
   const { user } = useContext(userContext);
   const navigate = useNavigate();
+  const { setFlightDataFilter } = useContext(flightDataFilter);
+  const fromCountryRef = useRef();
+  const toCountryRef = useRef();
+  const departingDateRef = useRef();
+  const returningDateRef = useRef();
 
   //increase counter
   const increase = () => {
@@ -45,6 +53,33 @@ const Flight = () => {
   const handleChange = (e) => {
     setLevelValue(e.target.value);
   };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log([
+      fromCountryRef.current,
+      toCountryRef.current,
+      departingDateRef.current,
+      returningDateRef.current,
+    ]);
+  };
+
+  useEffect(() => {
+    axios
+      .get("https://booking-flights-web-application.onrender.com/api/v1/tours")
+      .then((data) => {
+        setTours(data.data.data);
+        setCountries([
+          ...new Set(data.data.data.map((tour) => tour.fromCountry)),
+        ]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    console.log(tours);
+    console.log(countries);
+  }, [tours, countries]);
   return (
     <div className="containerflight ">
       <div className="flight Container" id="flight">
@@ -79,7 +114,7 @@ const Flight = () => {
         </div>
         <div className="content">
           {flight ? (
-            <div className="py-3">
+            <form onSubmit={submitHandler} className="py-3">
               <RadioGroup
                 className="radiogroup flights-div"
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -103,9 +138,17 @@ const Flight = () => {
                 />
               </RadioGroup>
               <Grid className="grid flights-grid text-center ">
-                <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
+                <Grouped
+                  className="d-flex"
+                  inputRef={fromCountryRef}
+                  data={countries}
+                />
+                <Grouped
+                  className="d-flex"
+                  inputRef={toCountryRef}
+                  data={countries}
+                />
+                {/* <Grouped className="d-flex" /> */}
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Class</InputLabel>
                   <Select
@@ -128,7 +171,15 @@ const Flight = () => {
                   dateAdapter={AdapterDayjs}
                 >
                   <DemoContainer components={["DatePicker"]}>
-                    <DatePicker label=" Departing Date" />
+                    <DatePicker
+                      label="Departing Date"
+                      slotProps={{
+                        textField: {
+                          required: true,
+                        },
+                      }}
+                      ref={departingDateRef}
+                    />
                   </DemoContainer>
                 </LocalizationProvider>
                 {/* end LocalizationProvider */}
@@ -138,7 +189,15 @@ const Flight = () => {
                   dateAdapter={AdapterDayjs}
                 >
                   <DemoContainer components={["DatePicker"]}>
-                    <DatePicker label="Returning Date" />
+                    <DatePicker
+                      label="Returning Date"
+                      slotProps={{
+                        textField: {
+                          required: true,
+                        },
+                      }}
+                      ref={returningDateRef}
+                    />
                   </DemoContainer>
                 </LocalizationProvider>
                 {/* end LocalizationProvider */}
@@ -148,14 +207,14 @@ const Flight = () => {
                   if (!user) {
                     alert("you must login in to search for flights");
                   } else {
-                    navigate("/flights-list");
+                    // navigate("/flights-list");
                   }
                 }}
                 className="btn d-block mt-5 mx-auto bg search-trip-btn  "
               >
                 Search for Flight
               </button>
-            </div>
+            </form>
           ) : (
             <div className="py-3 rounded-end rounded-bottom">
               <div className="chexs">

@@ -63,6 +63,7 @@ const FlightsList = () => {
   useEffect(() => {
     console.log(selectedClasses);
   }, [selectedClasses]);
+
   return (
     <div className="tourlist-container">
       <div className="tourlist-options-div Container">
@@ -161,7 +162,7 @@ const FlightsList = () => {
 
             {departureTrips.map((trip) => {
               if (selectedClasses[trip.class]) {
-                  return (
+                return (
                   <div className="tourlist-div">
                     <div>
                       <img src={bus} /> <br />
