@@ -25,6 +25,8 @@ function App() {
     setUser(currentUser);
     setLoading(false);
   });
+  const [tours, setTours] = useState([]);
+  const [countries, setCountries] = useState([]);
 
   return (
     <div className="App">
@@ -42,7 +44,12 @@ function App() {
               <Home />
               <About />
               <Tour />
-              <Flight />
+              <Flight
+                tours={tours}
+                setTours={setTours}
+                countries={countries}
+                setCountries={setCountries}
+              />
               <Review />
               <Footer />
             </>
@@ -54,7 +61,17 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/confirm-reservation" element={<ReservationConfirm />} />
         <Route path="/tour-list" element={<TourList />} />
-        <Route path="/flights-list" element={<FlightsList />} />
+        <Route
+          path="/flights-list"
+          element={
+            <FlightsList
+              tours={tours}
+              setTours={setTours}
+              countries={countries}
+              setCountries={setCountries}
+            />
+          }
+        />
       </Routes>
     </div>
   );

@@ -19,23 +19,23 @@ import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlin
 import "./Flight.css";
 import { userContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { flightDataFilter } from "../context/FlightDataFilter";
+import { flightDataFilterContext } from "../context/FlightDataFilterContext";
 import axios from "axios";
 
-const Flight = () => {
+const Flight = ({ tours, setTours, countries, setCountries }) => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
-  const [levelValue, setLevelValue] = useState("");
   const [activeCard, setActiveCard] = useState(1);
-  const [tours, setTours] = useState([]);
-  const [countries, setCountries] = useState([]);
+  const [flightClass, setFlightClass] = useState("");
+  const [flightType, setFlightType] = useState("oneway");
   const { user } = useContext(userContext);
   const navigate = useNavigate();
-  const { setFlightDataFilter } = useContext(flightDataFilter);
+  const { setFlightDataFilter } = useContext(flightDataFilterContext);
   const fromCountryRef = useRef();
   const toCountryRef = useRef();
   const departingDateRef = useRef();
   const returningDateRef = useRef();
+  const flightTypeRef = useRef();
 
   //increase counter
   const increase = () => {
@@ -51,17 +51,26 @@ const Flight = () => {
 
   // select value change handler
   const handleChange = (e) => {
-    setLevelValue(e.target.value);
+    setFlightClass(e.target.value);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log([
-      fromCountryRef.current,
-      toCountryRef.current,
-      departingDateRef.current,
-      returningDateRef.current,
-    ]);
+    setFlightDataFilter({
+      fromCountry:
+        fromCountryRef.current.children[0].children[1].children[0].value,
+      toCountry: toCountryRef.current.children[0].children[1].children[0].value,
+      departingDate: departingDateRef.current.children[1].children[0].value,
+      returningDate: returningDateRef.current?.children[1].children[0].value,
+      flightType: document.querySelector('[name="flight-types"]:checked').value,
+      flightClass: flightClass,
+    });
+
+    if (!user) {
+      alert("you must login in to search for flights");
+    } else {
+      navigate("/flights-list");
+    }
   };
 
   useEffect(() => {
@@ -76,10 +85,6 @@ const Flight = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    console.log(tours);
-    console.log(countries);
-  }, [tours, countries]);
   return (
     <div className="containerflight ">
       <div className="flight Container" id="flight">
@@ -119,7 +124,14 @@ const Flight = () => {
                 className="radiogroup flights-div"
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="oneway"
-                name="radio-buttons-group"
+                name="flight-types"
+                ref={flightTypeRef}
+                onChange={() => {
+                  setFlightType(
+                    document.querySelector('[name="flight-types"]:checked')
+                      .value
+                  );
+                }}
               >
                 <FormControlLabel
                   value="return"
@@ -142,11 +154,13 @@ const Flight = () => {
                   className="d-flex"
                   inputRef={fromCountryRef}
                   data={countries}
+                  label="From City"
                 />
                 <Grouped
                   className="d-flex"
                   inputRef={toCountryRef}
                   data={countries}
+                  label="To City"
                 />
                 {/* <Grouped className="d-flex" /> */}
                 <FormControl fullWidth>
@@ -184,34 +198,27 @@ const Flight = () => {
                 </LocalizationProvider>
                 {/* end LocalizationProvider */}
                 {/* start LocalizationProvider */}
-                <LocalizationProvider
-                  className="d-flex"
-                  dateAdapter={AdapterDayjs}
-                >
-                  <DemoContainer components={["DatePicker"]}>
-                    <DatePicker
-                      label="Returning Date"
-                      slotProps={{
-                        textField: {
-                          required: true,
-                        },
-                      }}
-                      ref={returningDateRef}
-                    />
-                  </DemoContainer>
-                </LocalizationProvider>
+                {flightType !== "oneway" && (
+                  <LocalizationProvider
+                    className="d-flex"
+                    dateAdapter={AdapterDayjs}
+                  >
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        label="Returning Date"
+                        slotProps={{
+                          textField: {
+                            required: true,
+                          },
+                        }}
+                        ref={returningDateRef}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
+                )}
                 {/* end LocalizationProvider */}
               </Grid>
-              <button
-                onClick={() => {
-                  if (!user) {
-                    alert("you must login in to search for flights");
-                  } else {
-                    // navigate("/flights-list");
-                  }
-                }}
-                className="btn d-block mt-5 mx-auto bg search-trip-btn  "
-              >
+              <button className="btn d-block mt-5 mx-auto bg search-trip-btn  ">
                 Search for Flight
               </button>
             </form>
