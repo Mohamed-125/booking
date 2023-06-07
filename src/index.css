@@ -14,8 +14,8 @@ html {
   scroll-behavior: smooth;
 }
 a {
-  color: inherit;
-  text-decoration: none;
+  color: orangered !important;
+  text-decoration: none !important;
 }
 
 .Container {
