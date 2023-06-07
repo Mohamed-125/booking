@@ -10,14 +10,18 @@
 .tour-container {
   margin-bottom: 30px;
 }
+.swiper-slide-active {
+  transform: scale(1.08) !important;
+  transition: 0.3s all ease;
+}
 
 @media (max-width: 774px) {
   .tour-container div > div * {
     text-align: center !important;
     padding: 0 !important;
   }
-}
-.swiper-slide-active {
-  transform: scale(1.08) !important;
-  transition: 0.3s all ease;
+  .swiper-slide-active {
+    transform: scale(1) !important;
+    transition: 0.3s all ease;
+  }
 }
