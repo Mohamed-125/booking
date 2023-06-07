@@ -7,7 +7,7 @@
   background-color: white;
   padding: 40px 30px;
   display: flex;
-  gap: 30px;
+  gap: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,7 +70,7 @@
 .tourlist-div {
   display: flex;
   gap: 3.5px;
-  font-size: clamp(12px, 2vw, 14px);
+  font-size: clamp(14px, 2vw, 14px);
   width: 100%;
   border-radius: 10px;
   border: 1px solid var(--gray-color);
@@ -87,34 +87,8 @@
   align-items: center;
   background-color: white;
   padding-block: 10px;
-}
-
-.tourlist-div > div:first-child {
-  width: 150px;
-}
-
-.tourlist-div > div:first-child > img:first-child {
-  width: 50px;
-}
-
-.tourlist-div > div:first-child > div > img {
-  width: 22px;
-}
-
-.tourlist-div > div:nth-child(2) {
-  max-width: 155px;
-}
-.tourlist-div > div:nth-child(3) {
-  max-width: 75px;
-}
-
-.tourlist-div > div:nth-child(4) {
-  max-width: 75px;
   text-align: center;
-}
-
-.tourlist-div > div:nth-child(5) {
-  max-width: 100px;
+  padding-inline: 5px;
 }
 
 .tourlist-div > div:last-child {
@@ -129,4 +103,46 @@
 .tourlist-div .tourlist-features-div {
   display: flex;
   gap: 7px;
+}
+
+@media (max-width: 1020px) {
+  .tourlist-options-div {
+    flex-direction: column;
+    width: 95%;
+    padding-inline: 20px;
+    padding-block: 30px;
+  }
+  .tourlist-options {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+  .tourlist-options > div:last-child {
+    border-top: none;
+    border-left: 1px solid var(--gray-color);
+  }
+}
+
+@media (max-width: 760px) {
+  .tourlist-div {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  .tourlist-div > div {
+    min-width: 200px;
+    max-width: none !important;
+  }
+  .tourlist-departure-trips {
+    padding-inline: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tourlist-options {
+    flex-direction: column;
+  }
+  .tourlist-options > div:last-child {
+    border-left: none;
+    border-top: 1px solid var(--gray-color);
+  }
 }

@@ -12,24 +12,6 @@ import template from "./image/city/temple.jpg";
 import "./Tour.css";
 
 const Tour = () => {
-  // when to use make fetching api
-  // const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   touraxios
-  //     .get("/api/v1/tours")
-  //     .then((response) => setProducts(response.data.data));
-  // }, []);
-  // const [product, setProduct] = useState()
-
-  // useEffect(() => {
-  //   const getUsers = async () => {
-  //     await touraxios.get('/api/v1/tours')
-  //       .then(response => response.json())
-  //       .then(data => setProduct(data.message))
-  //   };
-  // }, [])
-
   return (
     <div className="Container tour-container" id="tour">
       <h3 className="special-heading">Tour</h3>

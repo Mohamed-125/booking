@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
@@ -17,6 +17,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ReservationConfirm from "./pages/ReservationConfirm";
 import TourList from "./pages/TourList";
 import FlightsList from "./pages/FlightsList";
+import axios from "axios";
 
 function App() {
   const { setUser } = useContext(userContext);
@@ -27,6 +28,22 @@ function App() {
   });
   const [tours, setTours] = useState([]);
   const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://booking-flights-web-application.onrender.com/api/v1/tours")
+      .then((data) => {
+        setTours(data.data.data);
+        setCountries([
+          ...new Set(data.data.data.map((tour) => tour.fromCountry)),
+        ]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    console.log(tours);
+  }, [tours]);
 
   return (
     <div className="App">

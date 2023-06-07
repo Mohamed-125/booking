@@ -64,6 +64,7 @@ const Flight = ({ tours, setTours, countries, setCountries }) => {
       returningDate: returningDateRef.current?.children[1].children[0].value,
       flightType: document.querySelector('[name="flight-types"]:checked').value,
       flightClass: flightClass,
+      transportation: "plane",
     });
 
     if (!user) {
@@ -72,18 +73,6 @@ const Flight = ({ tours, setTours, countries, setCountries }) => {
       navigate("/flights-list");
     }
   };
-
-  useEffect(() => {
-    axios
-      .get("https://booking-flights-web-application.onrender.com/api/v1/tours")
-      .then((data) => {
-        setTours(data.data.data);
-        setCountries([
-          ...new Set(data.data.data.map((tour) => tour.fromCountry)),
-        ]);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   return (
     <div className="containerflight ">

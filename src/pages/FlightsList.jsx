@@ -4,6 +4,8 @@ import bus from "../assests/bus.png";
 import tv from "../assests/television.png";
 import wifi from "../assests/wifi.png";
 import airConditioning from "../assests/air-conditioner.png";
+import airport from "../assests/airport.png";
+
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
 const FlightsList = ({ tours, setTours, countries, setCountries }) => {
   const departureTrips = [
@@ -53,26 +55,27 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
   const [stopOption, setStopOption] = useState("");
   const [filteredFlightsList, setFilteredFlightsList] = useState([]);
   const { flightDataFilter } = useContext(flightDataFilterContext);
-
+  const [baggage, setBaggage] = useState({ 23: true, 30: true });
   useEffect(() => {
-    // setFilteredFlightsList(tours.filter(tour => {
-    //   if(tour.fromCountry === flightDataFilter.fromCountry && ) {
-    //     return tour
-    //   }
-    // }))
-
-    console.log(
+    setFilteredFlightsList(
       tours.filter((tour) => {
         if (
           tour.fromCountry === flightDataFilter.fromCountry &&
           tour.toCountry === flightDataFilter.toCountry &&
-          tour.type === flightDataFilter.flightType
+          tour.transportation === "plane"
+          // &&
+          // tour.type === flightDataFilter.flightType
         ) {
           return tour;
         }
       })
     );
-  }, []);
+  }, [tours]);
+
+  // useEffect(() => {
+  //   console.log(baggage);
+  // }, [baggage]);
+
   return (
     <div className="tourlist-container">
       <div className="tourlist-options-div Container">
@@ -113,10 +116,28 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
           <div>
             <h4>Departure / arrival times</h4>
             <div>
-              <input type="checkbox" /> <span>Check-in baggage of 23 kg</span>
+              <input
+                type="checkbox"
+                defaultChecked
+                onChange={(e) => {
+                  setBaggage((pre) => {
+                    return { ...pre, 23: e.target.checked };
+                  });
+                }}
+              />
+              <span>Check-in baggage of 23 kg</span>
             </div>
             <div>
-              <input type="checkbox" /> <span>Check-in baggage of 30 kg</span>
+              <input
+                type="checkbox"
+                defaultChecked
+                onChange={(e) => {
+                  setBaggage((pre) => {
+                    return { ...pre, 30: e.target.checked };
+                  });
+                }}
+              />
+              <span>Check-in baggage of 30 kg</span>
             </div>
           </div>
         </div>
@@ -126,31 +147,39 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
               Please select your departure trip
             </h4>
 
-            {departureTrips.map((trip) => {
-              return (
-                <div className="tourlist-div">
-                  <div>
-                    <img src={bus} /> <br />
-                    <div className="tourlist-features-div">
-                      {trip.tv && <img src={tv} />}
-                      {trip.wifi && <img src={wifi} />}
-                      {trip.airConditioning && <img src={airConditioning} />}
+            {filteredFlightsList.map((trip) => {
+              const takeOffData = new Date(trip.takeOff);
+              if (baggage[trip.baggage]) {
+                return (
+                  <div className="tourlist-div">
+                    <div>
+                      <img src={airport} />
+                    </div>
+                    <div>
+                      {trip.fromCountry} - {trip.toCountry}
+                    </div>
+                    <div style={{ maxWidth: "80px" }}>{trip.duration}H</div>
+                    <div>
+                      <p>Take Off </p>
+                      {takeOffData.toLocaleDateString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </div>
+                    <div style={{ maxWidth: "90px" }}>
+                      <p>Price</p>
+                      <p>{trip.price} L.E</p>
+                    </div>
+                    <div style={{ maxWidth: "90px" }}>
+                      <p>baggage</p>
+                      <p>{trip.baggage}KG</p>
+                    </div>
+                    <div>
+                      <p>View Details</p>
                     </div>
                   </div>
-                  <div>
-                    {trip.from} - {trip.to}{" "}
-                  </div>
-                  <div>{trip.time}H</div>
-                  <div>{trip.stops}</div>
-                  <div>
-                    <p>Price</p>
-                    <p>{trip.price} L.E</p>
-                  </div>
-                  <div>
-                    <p>View Details</p>
-                  </div>
-                </div>
-              );
+                );
+              }
             })}
           </div>
           <div className="tourlist-arrival-trips">

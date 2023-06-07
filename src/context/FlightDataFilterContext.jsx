@@ -1,7 +1,11 @@
 import React, { useState, useEffect, createContext } from "react";
 export const flightDataFilterContext = createContext({});
 const FlightDataFilterContext = ({ children }) => {
-  const [flightDataFilter, setFlightDataFilter] = useState({});
+  const [flightDataFilter, setFlightDataFilter] = useState({
+    fromCountry: "United Kingdom",
+    toCountry: "Egypt",
+    flightType: "oneway",
+  });
 
   useEffect(() => {
     console.log(flightDataFilter);
