@@ -1,6 +1,12 @@
 .footer {
   /* padding: 40px 0px 0px 0; */
-  background-color: #000000e3;
+  background-color: #2d2d2d;
+  margin-bottom: 0px !important;
+  color: white !important;
+}
+.text-muted {
+  color: white !important;
+  text-decoration: none;
 }
 .footer-photo img {
   width: 100%;

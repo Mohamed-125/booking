@@ -1,6 +1,11 @@
 .containerflight {
   background-image: url("../assests/reservationConfirmBackground.png");
 }
+
+.search-trip-btn {
+  background-color: #f35300 !important;
+}
+
 .containerflight h3 {
   margin-bottom: 0px !important;
 }
