@@ -16,7 +16,7 @@ const Review = () => {
   // if you use api use the setstate
   // const [value, setValue] = React.useState(2);
   return (
-    <div className=" " id="reviews">
+    <div className="Container" id="reviews">
       <h3 className="special-heading">Reviews</h3>
       <div className="text-center ">
         <p className="fs-5">
