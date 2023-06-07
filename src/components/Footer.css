@@ -4,9 +4,9 @@
   margin-bottom: 0px !important;
   color: white !important;
 }
-.text-muted {
-  color: white !important;
+.nav-item a {
   text-decoration: none;
+  color: white !important;
 }
 .footer-photo img {
   width: 100%;
