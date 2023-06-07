@@ -43,11 +43,6 @@
 }
 
 @media (max-width: 760px) {
-  .person {
-    width: 100%;
-    max-width: 250px;
-    min-width: none;
-  }
   .place {
     display: flex;
     justify-content: center;
@@ -134,11 +129,6 @@
   .feedback {
     font-size: 16px;
   }
-  .swiper-pagination-bullet {
-    width: 15px !important;
-    border-radius: 5px;
-    height: 7px;
-  }
 }
 
 .swiper-slide {
@@ -161,4 +151,15 @@
 .feedback {
   margin-bottom: 2.5rem;
   max-width: 500px;
+}
+
+@media (max-width: 580px) {
+  #reviews .name ~ div {
+    flex-direction: column;
+  }
+  .swiper-pagination-bullet {
+    width: 25px !important;
+    border-radius: 5px;
+    height: 5px;
+  }
 }
