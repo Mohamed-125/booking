@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 import "./ReservationConfirm.css";
+import { useLocation } from "react-router";
+import airport from "../assests/airport.png";
+import qr from "../assests/qr-code.png";
+
 const ReservationConfirm = () => {
   const [activeCard, setActiveCard] = useState(1);
+  const location = useLocation();
+  const {
+    fromCountry,
+    toCountry,
+    fromSite,
+    toSite,
+    takeOffDate,
+    baggage,
+    price,
+  } = location.state;
   return (
     <div className="reservation-confirm-container">
       <div className="Container">
@@ -39,19 +53,19 @@ const ReservationConfirm = () => {
                   <div>
                     <div>
                       <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
+                      <h5>{fromCountry}</h5>
+                      <p>{fromSite}</p>
                     </div>
                     <div>
                       <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
+                      <h5>{toCountry}</h5>
+                      <p>{toSite}</p>
                     </div>
                   </div>
                   <div>
                     <div>
                       <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
+                      <h5>{takeOffDate.toLocaleDateString([])}</h5>
                       <p>Friday</p>
                     </div>
                     <div>
@@ -77,205 +91,33 @@ const ReservationConfirm = () => {
                 </div>
                 <div className="reservaton-ticket-confirm-row">
                   <div>
+                    <div style={{ alignItems: "center" }}>
+                      <img src={airport} />
+                    </div>
+                    <div>fdsfsd</div>
+                  </div>
+                  <div style={{ textAlign: "center" }}>
                     <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
+                      <h6>Baggage</h6>
+                      <p>{baggage}</p>
                     </div>
                     <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
+                      <h6>Extra baggage</h6>
+                      <p>30 Km</p>
                     </div>
                   </div>
                   <div>
                     <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
+                      <h6>Total price</h6>
+                      <p>{price}</p>
                     </div>
                     <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
+                      <h6 style={{ color: "orangered", fontWeight: "600" }}>
+                        Pay Now
+                      </h6>
                     </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="reservation-confirm-div">
-                <div className="reservaton-ticket-confirm-row">
-                  <div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="reservaton-ticket-confirm-row">
-                  <div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="reservation-confirm-div">
-                <div className="reservaton-ticket-confirm-row">
-                  <div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="reservaton-ticket-confirm-row">
-                  <div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
+                    <div style={{ alignItems: "center" }}>
+                      <img src={qr} />
                     </div>
                   </div>
                 </div>
@@ -284,46 +126,6 @@ const ReservationConfirm = () => {
           ) : (
             <>
               <div className="reservation-confirm-div">
-                <div className="reservaton-ticket-confirm-row">
-                  <div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                    <div>
-                      <p>From</p>
-                      <h5>Cairo</h5>
-                      <p>Cairo International Airport, Egypt</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                    <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
-                    </div>
-                  </div>
-                  <div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                    <div>
-                      <p>Adults</p>
-                      <p>2</p>
-                    </div>
-                  </div>
-                </div>
                 <div className="reservaton-ticket-confirm-row">
                   <div>
                     <div>

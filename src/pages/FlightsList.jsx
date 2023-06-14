@@ -7,51 +7,8 @@ import airConditioning from "../assests/air-conditioner.png";
 import airport from "../assests/airport.png";
 
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
+import { Link } from "react-router-dom";
 const FlightsList = ({ tours, setTours, countries, setCountries }) => {
-  const departureTrips = [
-    {
-      tv: true,
-      wifi: true,
-      airConditioning: true,
-      time: 10,
-      stops: "1 stop",
-      price: 255,
-      from: "20:00",
-      to: "06:00",
-    },
-    {
-      tv: true,
-      wifi: true,
-      airConditioning: true,
-      time: 10,
-      stops: "1 stop",
-      price: 255,
-      from: "20:00",
-      to: "06:00",
-    },
-  ];
-  const arrivalTrips = [
-    {
-      tv: true,
-      wifi: true,
-      airConditioning: true,
-      time: 10,
-      stops: "1 stop",
-      price: 255,
-      from: "20:00",
-      to: "06:00",
-    },
-    {
-      tv: true,
-      wifi: true,
-      airConditioning: true,
-      time: 10,
-      stops: "1 stop",
-      price: 255,
-      from: "20:00",
-      to: "06:00",
-    },
-  ];
   const [stopOption, setStopOption] = useState("");
   const [filteredFlightsList, setFilteredFlightsList] = useState([]);
   const { flightDataFilter } = useContext(flightDataFilterContext);
@@ -148,7 +105,7 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
             </h4>
 
             {filteredFlightsList.map((trip) => {
-              const takeOffData = new Date(trip.takeOff);
+              const takeOffDate = new Date(trip.takeOff);
               if (baggage[trip.baggage]) {
                 return (
                   <div className="tourlist-div">
@@ -161,7 +118,7 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
                     <div style={{ maxWidth: "80px" }}>{trip.duration}H</div>
                     <div>
                       <p>Take Off </p>
-                      {takeOffData.toLocaleDateString([], {
+                      {takeOffDate.toLocaleDateString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
@@ -175,44 +132,28 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
                       <p>{trip.baggage}KG</p>
                     </div>
                     <div>
-                      <p>View Details</p>
+                      <Link
+                        to="/confirm-reservation"
+                        state={{
+                          baggage: trip.baggage,
+                          fromCountry: trip.fromCountry,
+                          toCountry: trip.toCountry,
+                          price: trip.price,
+                          duration: trip.duration,
+                          takeOffDate,
+                          fromSite: trip.fromSite,
+                          baggage: trip.baggage,
+                          toSite: trip.toSite,
+                          price: tirp.price,
+                        }}
+                      >
+                        <p>View Details</p>
+                      </Link>
                     </div>
                   </div>
                 );
               }
             })}
-          </div>
-          <div className="tourlist-arrival-trips">
-            <h4 style={{ marginBottom: "20px" }}>
-              Please select your arrival trip
-            </h4>
-
-            {/* {arrivalTrips.map((trip) => {
-              return (
-                <div className="tourlist-div">
-                  <div>
-                    <img src={bus} /> <br />
-                    <div className="tourlist-features-div">
-                      {trip.tv && <img src={tv} />}
-                      {trip.wifi && <img src={wifi} />}
-                      {trip.airConditioning && <img src={airConditioning} />}
-                    </div>
-                  </div>
-                  <div>
-                    {trip.from} - {trip.to}{" "}
-                  </div>
-                  <div>{trip.time}H</div>
-                  <div>{trip.stops}</div>
-                  <div>
-                    <p>Price</p>
-                    <p>{trip.price} L.E</p>
-                  </div>
-                  <div>
-                    <p>View Details</p>
-                  </div>
-                </div>
-              );
-            })} */}
           </div>
         </div>
       </div>
