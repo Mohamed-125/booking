@@ -101,57 +101,61 @@ const FlightsList = ({
             <h4 style={{ marginBottom: "20px" }}>
               Please select your departure trip
             </h4>
-
-            {filteredFlightsList.map((trip) => {
-              const takeOffDate = new Date(trip.takeOff);
-              if (baggage[trip.baggage]) {
-                return (
-                  <div className="tourlist-div">
-                    <div>
-                      <img src={airport} />
+            {filteredFlightsList.length === 0 ? (
+              <p>no flights</p>
+            ) : (
+              filteredFlightsList.map((trip) => {
+                const takeOffDate = new Date(trip.takeOff);
+                if (baggage[trip.baggage]) {
+                  return (
+                    <div className="tourlist-div">
+                      <div>
+                        <img src={airport} />
+                      </div>
+                      <div>
+                        {trip.fromCountry} - {trip.toCountry}
+                      </div>
+                      <div style={{ maxWidth: "80px" }}>{trip.duration}H</div>
+                      <div>
+                        <p>Take Off </p>
+                        {takeOffDate.toLocaleDateString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </div>
+                      <div style={{ maxWidth: "90px" }}>
+                        <p>Price</p>
+                        <p>{trip.price} L.E</p>
+                      </div>
+                      <div style={{ maxWidth: "90px" }}>
+                        <p>baggage</p>
+                        <p>{trip.baggage}KG</p>
+                      </div>
+                      <div>
+                        <Link
+                          to="/confirm-reservation"
+                          state={{
+                            baggage: trip.baggage,
+                            fromCountry: trip.fromCountry,
+                            toCountry: trip.toCountry,
+                            price: trip.price,
+                            duration: trip.duration,
+                            takeOffDate,
+                            fromSite: trip.fromSite,
+                            baggage: trip.baggage,
+                            toSite: trip.toSite,
+                            price: trip.price,
+                          }}
+                        >
+                          <p>View Details</p>
+                        </Link>
+                      </div>
                     </div>
-                    <div>
-                      {trip.fromCountry} - {trip.toCountry}
-                    </div>
-                    <div style={{ maxWidth: "80px" }}>{trip.duration}H</div>
-                    <div>
-                      <p>Take Off </p>
-                      {takeOffDate.toLocaleDateString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </div>
-                    <div style={{ maxWidth: "90px" }}>
-                      <p>Price</p>
-                      <p>{trip.price} L.E</p>
-                    </div>
-                    <div style={{ maxWidth: "90px" }}>
-                      <p>baggage</p>
-                      <p>{trip.baggage}KG</p>
-                    </div>
-                    <div>
-                      <Link
-                        to="/confirm-reservation"
-                        state={{
-                          baggage: trip.baggage,
-                          fromCountry: trip.fromCountry,
-                          toCountry: trip.toCountry,
-                          price: trip.price,
-                          duration: trip.duration,
-                          takeOffDate,
-                          fromSite: trip.fromSite,
-                          baggage: trip.baggage,
-                          toSite: trip.toSite,
-                          price: trip.price,
-                        }}
-                      >
-                        <p>View Details</p>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              }
-            })}
+                  );
+                }
+              })
+            )}
+            {}
           </div>
         </div>
       </div>
