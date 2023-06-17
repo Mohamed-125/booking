@@ -76,15 +76,27 @@
 }
 .ticket-counter {
   height: 100%;
+  gap: 1px;
+  height: 56px;
+  display: flex;
+  background-color: var(--gray-color);
 }
 .ticket-counter button {
-  padding: 10px 20px;
-  height: 100%;
-  color: white;
-  background-color: #f35300;
-  border-radius: 5px;
+  padding-inline: 20px;
+  height: 100% !important;
+  color: rgb(0, 0, 0);
+  background-color: rgb(242, 242, 242);
   border: none;
-  margin-inline: 10px;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+}
+.counter__output {
+  background-color: rgb(242, 242, 242);
+  padding-inline: 20px;
+  align-self: stretch;
+  justify-content: center !important;
+  display: flex;
 }
 
 .search-trip-btn {

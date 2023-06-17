@@ -26,24 +26,24 @@ function App() {
     setUser(currentUser);
     setLoading(false);
   });
-  const [tours, setTours] = useState([]);
-  const [countries, setCountries] = useState([]);
+  const [flights, setFlights] = useState([]);
+  const [flightsCountries, setFlightsCountries] = useState([]);
+  const [tour, setTour] = useState([]);
+  const [toursCountries, setToursCountries] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://booking-flights-web-application.onrender.com/api/v1/tours")
+      .get(
+        "https://booking-flights-web-application.onrender.com/api/v1/tours?transportation=plane"
+      )
       .then((data) => {
-        setTours(data.data.data);
-        setCountries([
+        setFlights(data.data.data);
+        setFlightsCountries([
           ...new Set(data.data.data.map((tour) => tour.fromCountry)),
         ]);
       })
       .catch((err) => console.log(err));
   }, []);
-
-  useEffect(() => {
-    console.log(tours);
-  }, [tours]);
 
   return (
     <div className="App">
@@ -61,12 +61,7 @@ function App() {
               <Home />
               <About />
               <Tour />
-              <Flight
-                tours={tours}
-                setTours={setTours}
-                countries={countries}
-                setCountries={setCountries}
-              />
+              <Flight flightsCountries={flightsCountries} />
               <Review />
               <Footer />
             </>
@@ -82,10 +77,10 @@ function App() {
           path="/flights-list"
           element={
             <FlightsList
-              tours={tours}
-              setTours={setTours}
-              countries={countries}
-              setCountries={setCountries}
+              flights={flights}
+              setFlights={setFlights}
+              flightsCountries={flightsCountries}
+              setFlightCountries={setFlightsCountries}
             />
           }
         />

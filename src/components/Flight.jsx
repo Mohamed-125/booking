@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
 import axios from "axios";
 
-const Flight = ({ tours, setTours, countries, setCountries }) => {
+const Flight = ({ flightsCountries }) => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
   const [activeCard, setActiveCard] = useState(1);
@@ -142,13 +142,13 @@ const Flight = ({ tours, setTours, countries, setCountries }) => {
                 <Grouped
                   className="d-flex"
                   inputRef={fromCountryRef}
-                  data={countries}
+                  data={flightsCountries}
                   label="From City"
                 />
                 <Grouped
                   className="d-flex"
                   inputRef={toCountryRef}
-                  data={countries}
+                  data={flightsCountries}
                   label="To City"
                 />
                 {/* <Grouped className="d-flex" /> */}
@@ -255,17 +255,12 @@ const Flight = ({ tours, setTours, countries, setCountries }) => {
                     <DatePicker label="Returning Date" />
                   </DemoContainer>
                 </LocalizationProvider>
-                <div
-                  style={{
-                    alignSelf: "center",
-                    width: "fit-content",
-                  }}
-                >
+                <div>
                   <div className="ticket-counter">
                     <button className="control__btn" onClick={increase}>
                       +
                     </button>
-                    <span className="counter__output">{counter}</span>
+                    <div className="counter__output">{counter}</div>
                     <button className="control__btn" onClick={decrease}>
                       -
                     </button>

@@ -8,30 +8,28 @@ import airport from "../assests/airport.png";
 
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
 import { Link } from "react-router-dom";
-const FlightsList = ({ tours, setTours, countries, setCountries }) => {
+const FlightsList = ({
+  flights,
+  setFlights,
+  flightsCountries,
+  setFlightCountries,
+}) => {
   const [stopOption, setStopOption] = useState("");
   const [filteredFlightsList, setFilteredFlightsList] = useState([]);
   const { flightDataFilter } = useContext(flightDataFilterContext);
   const [baggage, setBaggage] = useState({ 23: true, 30: true });
   useEffect(() => {
     setFilteredFlightsList(
-      tours.filter((tour) => {
+      flight.filter((tour) => {
         if (
           tour.fromCountry === flightDataFilter.fromCountry &&
-          tour.toCountry === flightDataFilter.toCountry &&
-          tour.transportation === "plane"
-          // &&
-          // tour.type === flightDataFilter.flightType
+          tour.toCountry === flightDataFilter.toCountry
         ) {
           return tour;
         }
       })
     );
-  }, [tours]);
-
-  // useEffect(() => {
-  //   console.log(baggage);
-  // }, [baggage]);
+  }, [flight]);
 
   return (
     <div className="tourlist-container">
