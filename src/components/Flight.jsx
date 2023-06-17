@@ -14,15 +14,17 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import FlightTakeoffOutlinedIcon from "@mui/icons-material/FlightTakeoffOutlined";
-import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlined";
 import "./Flight.css";
 import { userContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
-import axios from "axios";
 
-const Flight = ({ flightsCountries }) => {
+const Flight = ({
+  flightsCountries,
+  toursCountries,
+  fromToursCity,
+  toToursCity,
+}) => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
   const [activeCard, setActiveCard] = useState(1);
@@ -223,7 +225,7 @@ const Flight = ({ flightsCountries }) => {
                   <FormControlLabel
                     value="return"
                     control={<Radio />}
-                    label="Return Trip"
+                    label="Country"
                   />
                   <FormControlLabel
                     value="oneway"
@@ -233,8 +235,21 @@ const Flight = ({ flightsCountries }) => {
                 </RadioGroup>
               </div>
               <Grid className="grid flights-grid text-center ">
-                <Grouped className="d-flex" />
-                <Grouped className="d-flex" />
+                <Grouped
+                  className="d-flex"
+                  data={toursCountries}
+                  label="Country"
+                />
+                <Grouped
+                  className="d-flex"
+                  data={toToursCity}
+                  label="To City"
+                />
+                <Grouped
+                  className="d-flex"
+                  data={fromToursCity}
+                  label="From City"
+                />
 
                 {/* start LocalizationProvider */}
                 <LocalizationProvider

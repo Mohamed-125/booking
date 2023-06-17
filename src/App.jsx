@@ -28,9 +28,10 @@ function App() {
   });
   const [flights, setFlights] = useState([]);
   const [flightsCountries, setFlightsCountries] = useState([]);
-  const [tour, setTour] = useState([]);
+  const [tours, setTours] = useState([]);
   const [toursCountries, setToursCountries] = useState([]);
-
+  const [fromToursCity, setFromToursCity] = useState([]);
+  const [toToursCity, setToToursCity] = useState([]);
   useEffect(() => {
     axios
       .get(
@@ -41,6 +42,23 @@ function App() {
         setFlightsCountries([
           ...new Set(data.data.data.map((tour) => tour.fromCountry)),
         ]);
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get(
+        "https://booking-flights-web-application.onrender.com/api/v1/tours?transportation=bus"
+      )
+      .then((data) => {
+        setTours(data.data.data);
+        setToursCountries([
+          ...new Set(data.data.data.map((tour) => tour.fromCountry)),
+        ]);
+        setFromToursCity([
+          ...new Set(data.data.data.map((tour) => tour.fromCity)),
+        ]);
+
+        setToToursCity([...new Set(data.data.data.map((tour) => tour.toCity))]);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -61,7 +79,12 @@ function App() {
               <Home />
               <About />
               <Tour />
-              <Flight flightsCountries={flightsCountries} />
+              <Flight
+                flightsCountries={flightsCountries}
+                toursCountries={toursCountries}
+                fromToursCity={fromToursCity}
+                toToursCity={toToursCity}
+              />
               <Review />
               <Footer />
             </>
@@ -72,7 +95,17 @@ function App() {
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/confirm-reservation" element={<ReservationConfirm />} />
-        <Route path="/tour-list" element={<TourList />} />
+        <Route
+          path="/tour-list"
+          element={
+            <TourList
+              tours={tours}
+              toursCountries={toursCountries}
+              fromToursCity={fromToursCity}
+              toToursCity={toToursCity}
+            />
+          }
+        />
         <Route
           path="/flights-list"
           element={

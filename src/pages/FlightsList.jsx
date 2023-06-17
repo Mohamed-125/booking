@@ -20,7 +20,7 @@ const FlightsList = ({
   const [baggage, setBaggage] = useState({ 23: true, 30: true });
   useEffect(() => {
     setFilteredFlightsList(
-      flight.filter((tour) => {
+      flights.filter((tour) => {
         if (
           tour.fromCountry === flightDataFilter.fromCountry &&
           tour.toCountry === flightDataFilter.toCountry
@@ -29,7 +29,7 @@ const FlightsList = ({
         }
       })
     );
-  }, [flight]);
+  }, [flights]);
 
   return (
     <div className="tourlist-container">
@@ -142,7 +142,7 @@ const FlightsList = ({
                           fromSite: trip.fromSite,
                           baggage: trip.baggage,
                           toSite: trip.toSite,
-                          price: tirp.price,
+                          price: trip.price,
                         }}
                       >
                         <p>View Details</p>

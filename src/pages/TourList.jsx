@@ -50,7 +50,7 @@ const arrivalTrips = [
   },
 ];
 
-const TourList = () => {
+const TourList = ({ tours, toursCountries }) => {
   const [selectedClasses, setSelectedClasses] = useState({
     Classic: true,
     "Deluxe Plus": true,
