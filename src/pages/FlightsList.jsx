@@ -8,30 +8,28 @@ import airport from "../assests/airport.png";
 
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
 import { Link } from "react-router-dom";
-const FlightsList = ({ tours, setTours, countries, setCountries }) => {
+const FlightsList = ({
+  flights,
+  setFlights,
+  flightsCountries,
+  setFlightCountries,
+}) => {
   const [stopOption, setStopOption] = useState("");
   const [filteredFlightsList, setFilteredFlightsList] = useState([]);
   const { flightDataFilter } = useContext(flightDataFilterContext);
   const [baggage, setBaggage] = useState({ 23: true, 30: true });
   useEffect(() => {
     setFilteredFlightsList(
-      tours.filter((tour) => {
+      flights.filter((tour) => {
         if (
           tour.fromCountry === flightDataFilter.fromCountry &&
-          tour.toCountry === flightDataFilter.toCountry &&
-          tour.transportation === "plane"
-          // &&
-          // tour.type === flightDataFilter.flightType
+          tour.toCountry === flightDataFilter.toCountry
         ) {
           return tour;
         }
       })
     );
-  }, [tours]);
-
-  // useEffect(() => {
-  //   console.log(baggage);
-  // }, [baggage]);
+  }, [flights]);
 
   return (
     <div className="tourlist-container">
@@ -103,57 +101,61 @@ const FlightsList = ({ tours, setTours, countries, setCountries }) => {
             <h4 style={{ marginBottom: "20px" }}>
               Please select your departure trip
             </h4>
-
-            {filteredFlightsList.map((trip) => {
-              const takeOffDate = new Date(trip.takeOff);
-              if (baggage[trip.baggage]) {
-                return (
-                  <div className="tourlist-div">
-                    <div>
-                      <img src={airport} />
+            {filteredFlightsList.length === 0 ? (
+              <p>no flights</p>
+            ) : (
+              filteredFlightsList.map((trip) => {
+                const takeOffDate = new Date(trip.takeOff);
+                if (baggage[trip.baggage]) {
+                  return (
+                    <div className="tourlist-div">
+                      <div>
+                        <img src={airport} />
+                      </div>
+                      <div>
+                        {trip.fromCountry} - {trip.toCountry}
+                      </div>
+                      <div style={{ maxWidth: "80px" }}>{trip.duration}H</div>
+                      <div>
+                        <p>Take Off </p>
+                        {takeOffDate.toLocaleDateString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </div>
+                      <div style={{ maxWidth: "90px" }}>
+                        <p>Price</p>
+                        <p>{trip.price} L.E</p>
+                      </div>
+                      <div style={{ maxWidth: "90px" }}>
+                        <p>baggage</p>
+                        <p>{trip.baggage}KG</p>
+                      </div>
+                      <div>
+                        <Link
+                          to="/confirm-reservation"
+                          state={{
+                            baggage: trip.baggage,
+                            fromCountry: trip.fromCountry,
+                            toCountry: trip.toCountry,
+                            price: trip.price,
+                            duration: trip.duration,
+                            takeOffDate,
+                            fromSite: trip.fromSite,
+                            baggage: trip.baggage,
+                            toSite: trip.toSite,
+                            price: trip.price,
+                          }}
+                        >
+                          <p>View Details</p>
+                        </Link>
+                      </div>
                     </div>
-                    <div>
-                      {trip.fromCountry} - {trip.toCountry}
-                    </div>
-                    <div style={{ maxWidth: "80px" }}>{trip.duration}H</div>
-                    <div>
-                      <p>Take Off </p>
-                      {takeOffDate.toLocaleDateString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </div>
-                    <div style={{ maxWidth: "90px" }}>
-                      <p>Price</p>
-                      <p>{trip.price} L.E</p>
-                    </div>
-                    <div style={{ maxWidth: "90px" }}>
-                      <p>baggage</p>
-                      <p>{trip.baggage}KG</p>
-                    </div>
-                    <div>
-                      <Link
-                        to="/confirm-reservation"
-                        state={{
-                          baggage: trip.baggage,
-                          fromCountry: trip.fromCountry,
-                          toCountry: trip.toCountry,
-                          price: trip.price,
-                          duration: trip.duration,
-                          takeOffDate,
-                          fromSite: trip.fromSite,
-                          baggage: trip.baggage,
-                          toSite: trip.toSite,
-                          price: tirp.price,
-                        }}
-                      >
-                        <p>View Details</p>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              }
-            })}
+                  );
+                }
+              })
+            )}
+            {}
           </div>
         </div>
       </div>

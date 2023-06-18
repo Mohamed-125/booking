@@ -26,24 +26,42 @@ function App() {
     setUser(currentUser);
     setLoading(false);
   });
+  const [flights, setFlights] = useState([]);
+  const [flightsCountries, setFlightsCountries] = useState([]);
   const [tours, setTours] = useState([]);
-  const [countries, setCountries] = useState([]);
-
+  const [toursCountries, setToursCountries] = useState([]);
+  const [fromToursCity, setFromToursCity] = useState([]);
+  const [toToursCity, setToToursCity] = useState([]);
   useEffect(() => {
     axios
-      .get("https://booking-flights-web-application.onrender.com/api/v1/tours")
+      .get(
+        "https://booking-flights-web-application.onrender.com/api/v1/tours?transportation=plane"
+      )
       .then((data) => {
-        setTours(data.data.data);
-        setCountries([
+        setFlights(data.data.data);
+        setFlightsCountries([
           ...new Set(data.data.data.map((tour) => tour.fromCountry)),
         ]);
       })
       .catch((err) => console.log(err));
-  }, []);
 
-  useEffect(() => {
-    console.log(tours);
-  }, [tours]);
+    axios
+      .get(
+        "https://booking-flights-web-application.onrender.com/api/v1/tours?transportation=bus"
+      )
+      .then((data) => {
+        setTours(data.data.data);
+        setToursCountries([
+          ...new Set(data.data.data.map((tour) => tour.fromCountry)),
+        ]);
+        setFromToursCity([
+          ...new Set(data.data.data.map((tour) => tour.fromCity)),
+        ]);
+
+        setToToursCity([...new Set(data.data.data.map((tour) => tour.toCity))]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="App">
@@ -62,10 +80,10 @@ function App() {
               <About />
               <Tour />
               <Flight
-                tours={tours}
-                setTours={setTours}
-                countries={countries}
-                setCountries={setCountries}
+                flightsCountries={flightsCountries}
+                toursCountries={toursCountries}
+                fromToursCity={fromToursCity}
+                toToursCity={toToursCity}
               />
               <Review />
               <Footer />
@@ -77,15 +95,25 @@ function App() {
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/confirm-reservation" element={<ReservationConfirm />} />
-        <Route path="/tour-list" element={<TourList />} />
+        <Route
+          path="/tour-list"
+          element={
+            <TourList
+              tours={tours}
+              toursCountries={toursCountries}
+              fromToursCity={fromToursCity}
+              toToursCity={toToursCity}
+            />
+          }
+        />
         <Route
           path="/flights-list"
           element={
             <FlightsList
-              tours={tours}
-              setTours={setTours}
-              countries={countries}
-              setCountries={setCountries}
+              flights={flights}
+              setFlights={setFlights}
+              flightsCountries={flightsCountries}
+              setFlightCountries={setFlightsCountries}
             />
           }
         />
