@@ -16,6 +16,41 @@ const ReservationConfirm = () => {
     baggage,
     price,
   } = location.state;
+   const [counter, setCounter] = useState(1);
+  const [counter2, setCounter2] = useState(0);
+  const [counter3, setCounter3] = useState(0);
+
+ const increase = () => {
+    setCounter((count) => count + 1);
+  };
+
+  //decrease counter
+  const decrease = () => {
+    if (counter > 1) {
+      setCounter((count) => count - 1);
+    }
+  };
+  const increase2 = () => {
+    setCounter2((count) => count + 1);
+  };
+
+  //decrease counter
+  const decrease2 = () => {
+    if (counter2 > 0) {
+      setCounter2((count) => count - 1);
+    }
+  };
+  const increase3 = () => {
+    setCounter3((count) => count + 1);
+  };
+
+  //decrease counter
+  const decrease3 = () => {
+    if (counter3 > 0) {
+      setCounter3((count) => count - 1);
+    }
+  };
+
   return (
     <div className="reservation-confirm-container">
       <div className="Container">
