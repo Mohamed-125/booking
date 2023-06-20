@@ -138,11 +138,9 @@ const FlightsList = ({
                             baggage: trip.baggage,
                             fromCountry: trip.fromCountry,
                             toCountry: trip.toCountry,
-                            price: trip.price,
                             duration: trip.duration,
                             takeOffDate,
                             fromSite: trip.fromSite,
-                            baggage: trip.baggage,
                             toSite: trip.toSite,
                             price: trip.price,
                           }}

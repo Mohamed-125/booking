@@ -18,6 +18,7 @@ import "./Flight.css";
 import { userContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
+import { tourDataFilterContext } from "../context/TourDataFilterContext";
 
 const Flight = ({
   flightsCountries,
@@ -33,12 +34,21 @@ const Flight = ({
   const { user } = useContext(userContext);
   const navigate = useNavigate();
   const { setFlightDataFilter } = useContext(flightDataFilterContext);
-  const fromCountryRef = useRef();
-  const toCountryRef = useRef();
-  const departingDateRef = useRef();
-  const returningDateRef = useRef();
+  const { tourDataFilter, setTourDataFilter } = useContext(
+    tourDataFilterContext
+  );
+  const fromCountryFlightRef = useRef();
+  const toCountryFlightRef = useRef();
+  const departingDateFlightRef = useRef();
+  const returningDateFlightRef = useRef();
   const flightTypeRef = useRef();
+  const fromCountryTourRef = useRef();
+  const toCountryTourRef = useRef();
+  const departingDateTourRef = useRef();
+  const returningDateTourRef = useRef();
+  const ticketCounterRef = useRef();
 
+  console.log(tourDataFilter);
   //increase counter
   const increase = () => {
     setCounter((count) => count + 1);
@@ -56,14 +66,17 @@ const Flight = ({
     setFlightClass(e.target.value);
   };
 
-  const submitHandler = (e) => {
+  const searchFlightHandler = (e) => {
     e.preventDefault();
     setFlightDataFilter({
       fromCountry:
-        fromCountryRef.current.children[0].children[1].children[0].value,
-      toCountry: toCountryRef.current.children[0].children[1].children[0].value,
-      departingDate: departingDateRef.current.children[1].children[0].value,
-      returningDate: returningDateRef.current?.children[1].children[0].value,
+        fromCountryFlightRef.current.children[0].children[1].children[0].value,
+      toCountry:
+        toCountryFlightRef.current.children[0].children[1].children[0].value,
+      departingDate:
+        departingDateFlightRef.current.children[1].children[0].value,
+      returningDate:
+        returningDateFlightRef.current?.children[1].children[0].value,
       flightType: document.querySelector('[name="flight-types"]:checked').value,
       flightClass: flightClass,
       transportation: "plane",
@@ -73,6 +86,25 @@ const Flight = ({
       alert("you must login in to search for flights");
     } else {
       navigate("/flights-list");
+    }
+  };
+
+  const searchTourHandler = (e) => {
+    e.preventDefault();
+    setTourDataFilter({
+      fromCity:
+        fromCountryTourRef.current.children[0].children[1].children[0].value,
+      toCity:
+        toCountryTourRef.current.children[0].children[1].children[0].value,
+      departingDate: departingDateTourRef.current.value,
+      returningDate: returningDateTourRef.current.value,
+      ticketCounter: ticketCounterRef.current.innerText,
+    });
+
+    if (!user) {
+      alert("you must login in to search for flights");
+    } else {
+      navigate("/tours-list");
     }
   };
 
@@ -110,7 +142,7 @@ const Flight = ({
         </div>
         <div className="content">
           {flight ? (
-            <form onSubmit={submitHandler} className="py-3">
+            <form onSubmit={searchFlightHandler} className="py-3">
               <RadioGroup
                 className="radiogroup flights-div"
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -143,13 +175,13 @@ const Flight = ({
               <Grid className="grid flights-grid text-center ">
                 <Grouped
                   className="d-flex"
-                  inputRef={fromCountryRef}
+                  inputRef={fromCountryFlightRef}
                   data={flightsCountries}
                   label="From City"
                 />
                 <Grouped
                   className="d-flex"
-                  inputRef={toCountryRef}
+                  inputRef={toCountryFlightRef}
                   data={flightsCountries}
                   label="To City"
                 />
@@ -183,7 +215,7 @@ const Flight = ({
                           required: true,
                         },
                       }}
-                      ref={departingDateRef}
+                      ref={departingDateFlightRef}
                     />
                   </DemoContainer>
                 </LocalizationProvider>
@@ -202,7 +234,7 @@ const Flight = ({
                             required: true,
                           },
                         }}
-                        ref={returningDateRef}
+                        ref={returningDateFlightRef}
                       />
                     </DemoContainer>
                   </LocalizationProvider>
@@ -214,8 +246,8 @@ const Flight = ({
               </button>
             </form>
           ) : (
-            <div className="py-3 rounded-end rounded-bottom">
-              <div className="chexs">
+            <form onSubmit={searchTourHandler} className="py-3">
+              <div>
                 <RadioGroup
                   className="radiogroup flights-div"
                   aria-labelledby="demo-radio-buttons-group-label"
@@ -244,11 +276,13 @@ const Flight = ({
                   className="d-flex"
                   data={toToursCity}
                   label="To City"
+                  inputRef={toCountryTourRef}
                 />
                 <Grouped
                   className="d-flex"
                   data={fromToursCity}
                   label="From City"
+                  inputRef={fromCountryTourRef}
                 />
 
                 {/* start LocalizationProvider */}
@@ -257,7 +291,15 @@ const Flight = ({
                   dateAdapter={AdapterDayjs}
                 >
                   <DemoContainer components={["DatePicker"]}>
-                    <DatePicker label=" Departing Date" />
+                    <DatePicker
+                      label=" Departing Date"
+                      slotProps={{
+                        textField: {
+                          required: true,
+                        },
+                      }}
+                      inputRef={departingDateTourRef}
+                    />
                   </DemoContainer>
                 </LocalizationProvider>
                 {/* end LocalizationProvider */}
@@ -267,7 +309,15 @@ const Flight = ({
                   dateAdapter={AdapterDayjs}
                 >
                   <DemoContainer components={["DatePicker"]}>
-                    <DatePicker label="Returning Date" />
+                    <DatePicker
+                      label="Returning Date"
+                      slotProps={{
+                        textField: {
+                          required: true,
+                        },
+                      }}
+                      inputRef={returningDateTourRef}
+                    />
                   </DemoContainer>
                 </LocalizationProvider>
                 <div>
@@ -275,7 +325,9 @@ const Flight = ({
                     <button className="control__btn" onClick={increase}>
                       +
                     </button>
-                    <div className="counter__output">{counter}</div>
+                    <div className="counter__output" ref={ticketCounterRef}>
+                      {counter}
+                    </div>
                     <button className="control__btn" onClick={decrease}>
                       -
                     </button>
@@ -284,19 +336,10 @@ const Flight = ({
                 {/* end LocalizationProvider */}
               </Grid>
 
-              <button
-                onClick={() => {
-                  if (!user) {
-                    alert("you must login in to search for trips");
-                  } else {
-                    navigate("/tour-list");
-                  }
-                }}
-                className="btn d-block mt-5 mx-auto bg search-trip-btn  "
-              >
+              <button className="btn d-block mt-5 mx-auto bg search-trip-btn">
                 Search for Trip
               </button>
-            </div>
+            </form>
           )}
         </div>
         <hr />

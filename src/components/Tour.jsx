@@ -110,6 +110,7 @@ const Tour = () => {
         slidesPerView={width > 1200 ? 2.3 : width > 1025 ? 1.7 : 1}
         modules={[Pagination]}
         watchOverflow={true}
+        loop={true}
         className="mySwiper"
       >
         {swipers.map((swiper) => {
