@@ -87,3 +87,15 @@
 .reservaton-ticket-confirm-row > div > div p:last-child {
   font-size: small;
 }
+/* -------update---------- */
+.counter-confirm{
+  width: 50%;
+    background: #f35300;
+    color: wheat;
+    border: none;
+    border-radius: 4px;
+}
+.counter-value{
+  height: 28px;
+  padding-top: 4px;
+}
