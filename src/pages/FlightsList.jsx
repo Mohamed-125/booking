@@ -142,9 +142,9 @@ const FlightsList = ({
                             duration: trip.duration,
                             takeOffDate,
                             fromSite: trip.fromSite,
-                            baggage: trip.baggage,
+                            // baggage: trip.baggage,
                             toSite: trip.toSite,
-                            price: trip.price,
+                            // price: trip.price,
                           }}
                         >
                           <p>View Details</p>
