@@ -18,39 +18,38 @@ const ReservationConfirm = () => {
     baggage,
     price,
   } = location.state;
-
-  //increase counter
   const increase = () => {
     setCounter((count) => count + 1);
   };
+
   //decrease counter
   const decrease = () => {
     if (counter > 1) {
       setCounter((count) => count - 1);
     }
   };
-
-
-  //increase counter
   const increase2 = () => {
     setCounter2((count) => count + 1);
   };
+
   //decrease counter
   const decrease2 = () => {
     if (counter2 > 0) {
       setCounter2((count) => count - 1);
     }
   };
-  //increase counter
   const increase3 = () => {
     setCounter3((count) => count + 1);
   };
+
   //decrease counter
   const decrease3 = () => {
     if (counter3 > 0) {
       setCounter3((count) => count - 1);
     }
   };
+
+
 
   return (
     <div className="reservation-confirm-container">
@@ -160,7 +159,7 @@ const ReservationConfirm = () => {
                     <div style={{ alignItems: "center" }}>
                       <img src={airport} />
                     </div>
-                    <div>10.30AM...11.30AM</div>
+                    <div>xxx........</div>
                   </div>
                   <div style={{ textAlign: "center" }}>
                     <div>
