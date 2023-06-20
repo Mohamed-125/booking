@@ -96,7 +96,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/confirm-reservation" element={<ReservationConfirm />} />
         <Route
-          path="/tour-list"
+          path="/tours-list"
           element={
             <TourList
               tours={tours}
