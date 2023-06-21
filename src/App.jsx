@@ -22,10 +22,6 @@ import axios from "axios";
 function App() {
   const { setUser } = useContext(userContext);
   const [loading, setLoading] = useState(true);
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser);
-  //   setLoading(false);
-  // });
   const [flights, setFlights] = useState([]);
   const [flightsCountries, setFlightsCountries] = useState([]);
   const [tours, setTours] = useState([]);
@@ -43,10 +39,7 @@ function App() {
         setFlightsCountries([
           ...new Set(data.data.data.map((tour) => tour.fromCountry)),
         ]);
-        console.log(
-          data.data.data,
-          ...new Set(data.data.data.map((tour) => tour.fromCountry))
-        );
+        setLoading(true);
       })
       .catch((err) => console.log(err));
 

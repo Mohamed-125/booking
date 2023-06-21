@@ -50,7 +50,6 @@ const Flight = ({
   const returningDateTourRef = useRef();
   const ticketCounterRef = useRef();
 
-  console.log(tourDataFilter);
   //increase counter
   const increase = () => {
     setCounter((count) => count + 1);
