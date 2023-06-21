@@ -22,10 +22,10 @@ import axios from "axios";
 function App() {
   const { setUser } = useContext(userContext);
   const [loading, setLoading] = useState(true);
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-    setLoading(false);
-  });
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUser(currentUser);
+  //   setLoading(false);
+  // });
   const [flights, setFlights] = useState([]);
   const [flightsCountries, setFlightsCountries] = useState([]);
   const [tours, setTours] = useState([]);

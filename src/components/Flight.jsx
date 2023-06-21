@@ -84,11 +84,7 @@ const Flight = ({
       transportation: "plane",
     });
 
-    if (!user) {
-      alert("you must login in to search for flights");
-    } else {
-      navigate("/flights-list");
-    }
+    navigate("/flights-list");
   };
 
   const searchTourHandler = (e) => {
@@ -103,11 +99,7 @@ const Flight = ({
       ticketCounter: ticketCounterRef.current.innerText,
     });
 
-    if (!user) {
-      alert("you must login in to search for flights");
-    } else {
-      navigate("/tours-list");
-    }
+    navigate("/tours-list");
   };
 
   useEffect(() => {
