@@ -101,6 +101,7 @@ const FlightsList = ({ flights }) => {
             ) : (
               filteredFlightsList.map((trip) => {
                 const takeOffDate = new Date(trip.takeOff);
+                const endDate = new Date(trip.endDate);
                 if (baggage[trip.baggage]) {
                   return (
                     <div className="tourlist-div">
@@ -138,6 +139,7 @@ const FlightsList = ({ flights }) => {
                             fromSite: trip.fromSite,
                             price: trip.price,
                             toSite: trip.toSite,
+                            endDate,
                           }}
                         >
                           <p>View Details</p>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ReservationConfirm.css";
 import { useLocation } from "react-router";
-import airport from "../assests/airport.png";
+import busImg from "../assests/bus.png";
 import qr from "../assests/qr-code.png";
 
 const ReservationConfirm = () => {
@@ -16,6 +16,7 @@ const ReservationConfirm = () => {
     baggage,
     price,
     bus,
+    endDate,
     tickets,
   } = location.state;
   const [counter, setCounter] = useState(1);
@@ -103,12 +104,10 @@ const ReservationConfirm = () => {
                     <div>
                       <p>Depart</p>
                       <h5>{takeOffDate?.toLocaleDateString([])}</h5>
-                      <p>Friday</p>
                     </div>
                     <div>
-                      <p>Depart</p>
-                      <h5>13 Dec 2022</h5>
-                      <p>Friday</p>
+                      <p>Return</p>
+                      <h5>{endDate?.toLocaleDateString([])}</h5>
                     </div>
                   </div>
                   <div>
@@ -194,9 +193,9 @@ const ReservationConfirm = () => {
                 <div className="reservaton-ticket-confirm-row">
                   <div>
                     <div style={{ alignItems: "center" }}>
-                      <img src={airport} />
+                      <img src={busImg} />
                     </div>
-                    <div>fdsfsd</div>
+                    <div>XX..........</div>
                   </div>
                   <div style={{ textAlign: "center" }}>
                     <div>

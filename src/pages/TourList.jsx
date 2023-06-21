@@ -86,6 +86,8 @@ const TourList = ({ tours }) => {
               filteredTours.map((trip) => {
                 if (selectedClasses[trip.class]) {
                   const takeOffDate = new Date(trip.takeOff);
+                  const endDate = new Date(trip.endDate);
+
                   return (
                     <div className="tourlist-div">
                       <div>
@@ -119,6 +121,7 @@ const TourList = ({ tours }) => {
                             toSite: trip.toSite,
                             bus: true,
                             tickets: tourDataFilter.ticketCounter,
+                            endDate,
                           }}
                         >
                           <p>View Details</p>
