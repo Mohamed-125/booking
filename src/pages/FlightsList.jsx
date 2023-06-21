@@ -136,8 +136,8 @@ const FlightsList = ({ flights }) => {
                             duration: trip.duration,
                             takeOffDate,
                             fromSite: trip.fromSite,
+                            price: trip.price,
                             toSite: trip.toSite,
-                            // price: trip.price,
                           }}
                         >
                           <p>View Details</p>

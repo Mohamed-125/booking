@@ -70,54 +70,55 @@ function App() {
 
   return (
     <div className="App">
-      {loading && (
+      {loading ? (
         <div>
           <span className="loader"></span>
         </div>
-      )}
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Navbar />
-              <Home />
-              <About />
-              <Tour />
-              <Flight
-                flightsCountries={flightsCountries}
+      ) : (
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar />
+                <Home />
+                <About />
+                <Tour />
+                <Flight
+                  flightsCountries={flightsCountries}
+                  toursCountries={toursCountries}
+                  fromToursCity={fromToursCity}
+                  toToursCity={toToursCity}
+                  loading={loading}
+                  setLoading={setLoading}
+                />
+                <Review />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgetpass" element={<Forgetpass />} />
+          <Route path="/sign-up" element={<Signup />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/confirm-reservation" element={<ReservationConfirm />} />
+          <Route
+            path="/tours-list"
+            element={
+              <TourList
+                tours={tours}
                 toursCountries={toursCountries}
                 fromToursCity={fromToursCity}
                 toToursCity={toToursCity}
-                loading={loading}
-                setLoading={setLoading}
               />
-              <Review />
-              <Footer />
-            </>
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgetpass" element={<Forgetpass />} />
-        <Route path="/sign-up" element={<Signup />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/confirm-reservation" element={<ReservationConfirm />} />
-        <Route
-          path="/tours-list"
-          element={
-            <TourList
-              tours={tours}
-              toursCountries={toursCountries}
-              fromToursCity={fromToursCity}
-              toToursCity={toToursCity}
-            />
-          }
-        />
-        <Route
-          path="/flights-list"
-          element={<FlightsList flights={flights} />}
-        />
-      </Routes>
+            }
+          />
+          <Route
+            path="/flights-list"
+            element={<FlightsList flights={flights} />}
+          />
+        </Routes>
+      )}
     </div>
   );
 }

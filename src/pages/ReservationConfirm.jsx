@@ -15,12 +15,14 @@ const ReservationConfirm = () => {
     takeOffDate,
     baggage,
     price,
+    bus,
+    tickets,
   } = location.state;
-   const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(1);
   const [counter2, setCounter2] = useState(0);
   const [counter3, setCounter3] = useState(0);
 
- const increase = () => {
+  const increase = () => {
     setCounter((count) => count + 1);
   };
 
@@ -77,7 +79,7 @@ const ReservationConfirm = () => {
                 : { backgroundColor: "white" }
             }
           >
-            <h3> One-way Flight</h3>
+            <h3> One-way {bus ? "Trip" : "Flight"} </h3>
           </div>
         </div>
         <div className="reservation-confirm-tickets-div">
@@ -100,7 +102,7 @@ const ReservationConfirm = () => {
                   <div>
                     <div>
                       <p>Depart</p>
-                      <h5>{takeOffDate.toLocaleDateString([])}</h5>
+                      <h5>{takeOffDate?.toLocaleDateString([])}</h5>
                       <p>Friday</p>
                     </div>
                     <div>
@@ -109,49 +111,84 @@ const ReservationConfirm = () => {
                       <p>Friday</p>
                     </div>
                   </div>
-                <div>
-                    <div>
-                      <p>Adults</p>
-                      <div>
+                  <div>
+                    {bus ? (
+                      <p
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          backgroundColor: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        Tickets : {tickets}
+                      </p>
+                    ) : (
+                      <>
                         <div>
-                          <button className="counter-confirm" onClick={increase}>
-                            +
-                          </button>
-                          <div className="counter-value">{counter}</div>
-                          <button className="counter-confirm" onClick={decrease}>
-                            -
-                          </button>
+                          <p>Adults</p>
+                          <div>
+                            <div>
+                              <button
+                                className="counter-confirm"
+                                onClick={increase}
+                              >
+                                +
+                              </button>
+                              <div className="counter-value">{counter}</div>
+                              <button
+                                className="counter-confirm"
+                                onClick={decrease}
+                              >
+                                -
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Kids</p>
-                      <div>
                         <div>
-                          <button className="counter-confirm" onClick={increase2}>
-                            +
-                          </button>
-                          <div className="counter-value">{counter2}</div>
-                          <button className="counter-confirm" onClick={decrease2}>
-                            -
-                          </button>
+                          <p>Kids</p>
+                          <div>
+                            <div>
+                              <button
+                                className="counter-confirm"
+                                onClick={increase2}
+                              >
+                                +
+                              </button>
+                              <div className="counter-value">{counter2}</div>
+                              <button
+                                className="counter-confirm"
+                                onClick={decrease2}
+                              >
+                                -
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Infants</p>
-                      <div>
                         <div>
-                          <button className="counter-confirm" onClick={increase3}>
-                            +
-                          </button>
-                          <div className="counter-value">{counter3}</div>
-                          <button className="counter-confirm" onClick={decrease3}>
-                            -
-                          </button>
+                          <p>Infants</p>
+                          <div>
+                            <div>
+                              <button
+                                className="counter-confirm"
+                                onClick={increase3}
+                              >
+                                +
+                              </button>
+                              <div className="counter-value">{counter3}</div>
+                              <button
+                                className="counter-confirm"
+                                onClick={decrease3}
+                              >
+                                -
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
+                      </>
+                    )}
                   </div>
                 </div>
                 <div className="reservaton-ticket-confirm-row">
@@ -216,16 +253,22 @@ const ReservationConfirm = () => {
                       <p>Friday</p>
                     </div>
                   </div>
-                 <div>
+                  <div>
                     <div>
                       <p>Adults</p>
                       <div>
                         <div>
-                          <button className="counter-confirm" onClick={increase}>
+                          <button
+                            className="counter-confirm"
+                            onClick={increase}
+                          >
                             +
                           </button>
                           <div className="counter-value">{counter}</div>
-                          <button className="counter-confirm" onClick={decrease}>
+                          <button
+                            className="counter-confirm"
+                            onClick={decrease}
+                          >
                             -
                           </button>
                         </div>
@@ -235,11 +278,17 @@ const ReservationConfirm = () => {
                       <p>Kids</p>
                       <div>
                         <div>
-                          <button className="counter-confirm" onClick={increase2}>
+                          <button
+                            className="counter-confirm"
+                            onClick={increase2}
+                          >
                             +
                           </button>
                           <div className="counter-value">{counter2}</div>
-                          <button className="counter-confirm" onClick={decrease2}>
+                          <button
+                            className="counter-confirm"
+                            onClick={decrease2}
+                          >
                             -
                           </button>
                         </div>
@@ -249,11 +298,17 @@ const ReservationConfirm = () => {
                       <p>Infants</p>
                       <div>
                         <div>
-                          <button className="counter-confirm" onClick={increase3}>
+                          <button
+                            className="counter-confirm"
+                            onClick={increase3}
+                          >
                             +
                           </button>
                           <div className="counter-value">{counter3}</div>
-                          <button className="counter-confirm" onClick={decrease3}>
+                          <button
+                            className="counter-confirm"
+                            onClick={decrease3}
+                          >
                             -
                           </button>
                         </div>

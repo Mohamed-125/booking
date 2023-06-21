@@ -5,7 +5,8 @@ import tv from "../assests/television.png";
 import wifi from "../assests/wifi.png";
 import airConditioning from "../assests/air-conditioner.png";
 import { tourDataFilterContext } from "../context/TourDataFilterContext";
-const TourList = ({ tours, toursCountries }) => {
+import { Link } from "react-router-dom";
+const TourList = ({ tours }) => {
   const [selectedClasses, setSelectedClasses] = useState({
     first: true,
     economy: true,
@@ -84,6 +85,7 @@ const TourList = ({ tours, toursCountries }) => {
             {filteredTours.length !== 0 ? (
               filteredTours.map((trip) => {
                 if (selectedClasses[trip.class]) {
+                  const takeOffDate = new Date(trip.takeOff);
                   return (
                     <div className="tourlist-div">
                       <div>
@@ -104,7 +106,23 @@ const TourList = ({ tours, toursCountries }) => {
                         <p>{trip.price} L.E</p>
                       </div>
                       <div>
-                        <p>View Details</p>
+                        <Link
+                          to="/confirm-reservation"
+                          state={{
+                            baggage: trip.baggage,
+                            fromCountry: trip.fromCountry,
+                            toCountry: trip.toCountry,
+                            duration: trip.duration,
+                            takeOffDate,
+                            price: trip.price,
+                            fromSite: trip.fromSite,
+                            toSite: trip.toSite,
+                            bus: true,
+                            tickets: tourDataFilter.ticketCounter,
+                          }}
+                        >
+                          <p>View Details</p>
+                        </Link>
                       </div>
                     </div>
                   );
