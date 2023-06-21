@@ -39,7 +39,7 @@ function App() {
         setFlightsCountries([
           ...new Set(data.data.data.map((tour) => tour.fromCountry)),
         ]);
-        setLoading(true);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
 
