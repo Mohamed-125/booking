@@ -8,12 +8,7 @@ import airport from "../assests/airport.png";
 
 import { flightDataFilterContext } from "../context/FlightDataFilterContext";
 import { Link } from "react-router-dom";
-const FlightsList = ({
-  flights,
-  setFlights,
-  flightsCountries,
-  setFlightCountries,
-}) => {
+const FlightsList = ({ flights }) => {
   const [stopOption, setStopOption] = useState("");
   const [filteredFlightsList, setFilteredFlightsList] = useState([]);
   const { flightDataFilter } = useContext(flightDataFilterContext);

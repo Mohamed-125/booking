@@ -114,40 +114,6 @@ const TourList = ({ tours, toursCountries }) => {
               <p>no results</p>
             )}
           </div>
-          {/* <div className="tourlist-arrival-trips">
-            <h4 style={{ marginBottom: "20px" }}>
-              Please select your arrival trip
-            </h4>
-
-            {arrivalTrips.map((trip) => {
-              if (selectedClasses[trip.class]) {
-                return (
-                  <div className="tourlist-div">
-                    <div>
-                      <img src={bus} /> <br />
-                      <div className="tourlist-features-div">
-                        {trip.tv && <img src={tv} />}
-                        {trip.wifi && <img src={wifi} />}
-                        {trip.airConditioning && <img src={airConditioning} />}
-                      </div>
-                    </div>
-                    <div>
-                      {trip.from} - {trip.to}{" "}
-                    </div>
-                    <div>{trip.time}H</div>
-                    <div>{trip.class}</div>
-                    <div>
-                      <p>Price</p>
-                      <p>{trip.price} L.E</p>
-                    </div>
-                    <div>
-                      <p>View Details</p>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-          </div> */}
         </div>
       </div>
     </div>

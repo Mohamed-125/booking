@@ -25,6 +25,8 @@ const Flight = ({
   toursCountries,
   fromToursCity,
   toToursCity,
+  loading,
+  setLoading,
 }) => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
@@ -108,6 +110,13 @@ const Flight = ({
     }
   };
 
+  useEffect(() => {
+    if (flightsCountries.length === 0) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [flightsCountries]);
   return (
     <div className="containerflight ">
       <div className="flight Container" id="flight">
@@ -141,7 +150,11 @@ const Flight = ({
           </div>
         </div>
         <div className="content">
-          {flight ? (
+          {flightsCountries.length === 0 ? (
+            <div>
+              <span className="loader"></span>
+            </div>
+          ) : flight ? (
             <form onSubmit={searchFlightHandler} className="py-3">
               <RadioGroup
                 className="radiogroup flights-div"
@@ -322,13 +335,21 @@ const Flight = ({
                 </LocalizationProvider>
                 <div>
                   <div className="ticket-counter">
-                    <button className="control__btn" onClick={increase}>
+                    <button
+                      type="button"
+                      className="control__btn"
+                      onClick={increase}
+                    >
                       +
                     </button>
                     <div className="counter__output" ref={ticketCounterRef}>
                       {counter}
                     </div>
-                    <button className="control__btn" onClick={decrease}>
+                    <button
+                      type="button"
+                      className="control__btn"
+                      onClick={decrease}
+                    >
                       -
                     </button>
                   </div>

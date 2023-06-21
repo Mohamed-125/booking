@@ -32,6 +32,7 @@ function App() {
   const [toursCountries, setToursCountries] = useState([]);
   const [fromToursCity, setFromToursCity] = useState([]);
   const [toToursCity, setToToursCity] = useState([]);
+
   useEffect(() => {
     axios
       .get(
@@ -42,6 +43,10 @@ function App() {
         setFlightsCountries([
           ...new Set(data.data.data.map((tour) => tour.fromCountry)),
         ]);
+        console.log(
+          data.data.data,
+          ...new Set(data.data.data.map((tour) => tour.fromCountry))
+        );
       })
       .catch((err) => console.log(err));
 
@@ -84,6 +89,8 @@ function App() {
                 toursCountries={toursCountries}
                 fromToursCity={fromToursCity}
                 toToursCity={toToursCity}
+                loading={loading}
+                setLoading={setLoading}
               />
               <Review />
               <Footer />
@@ -108,14 +115,7 @@ function App() {
         />
         <Route
           path="/flights-list"
-          element={
-            <FlightsList
-              flights={flights}
-              setFlights={setFlights}
-              flightsCountries={flightsCountries}
-              setFlightCountries={setFlightsCountries}
-            />
-          }
+          element={<FlightsList flights={flights} />}
         />
       </Routes>
     </div>
