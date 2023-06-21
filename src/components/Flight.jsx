@@ -25,8 +25,6 @@ const Flight = ({
   toursCountries,
   fromToursCity,
   toToursCity,
-  loading,
-  setLoading,
 }) => {
   const [flight, setflight] = useState(true);
   const [counter, setCounter] = useState(1);
@@ -101,14 +99,6 @@ const Flight = ({
     navigate("/tours-list");
   };
 
-  useEffect(() => {
-    if (flightsCountries.length === 0) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  }, [flightsCountries]);
-
   return (
     <div className="containerflight ">
       <div className="flight Container" id="flight">
@@ -142,11 +132,7 @@ const Flight = ({
           </div>
         </div>
         <div className="content">
-          {flightsCountries.length === 0 ? (
-            <div>
-              <span className="loader"></span>
-            </div>
-          ) : flight ? (
+          {flight ? (
             <form onSubmit={searchFlightHandler} className="py-3">
               <RadioGroup
                 className="radiogroup flights-div"

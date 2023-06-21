@@ -82,8 +82,6 @@ function App() {
                   toursCountries={toursCountries}
                   fromToursCity={fromToursCity}
                   toToursCity={toToursCity}
-                  loading={loading}
-                  setLoading={setLoading}
                 />
                 <Review />
                 <Footer />
