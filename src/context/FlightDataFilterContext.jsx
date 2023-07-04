@@ -8,7 +8,7 @@ const FlightDataFilterContext = ({ children }) => {
   });
 
   useEffect(() => {
-    console.log(flightDataFilter);
+    // console.log(flightDataFilter);
   }, [flightDataFilter]);
 
   return (

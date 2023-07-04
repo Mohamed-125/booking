@@ -3,6 +3,7 @@ import "./ReservationConfirm.css";
 import { useLocation } from "react-router";
 import busImg from "../assests/bus.png";
 import qr from "../assests/qr-code.png";
+import { Link } from "react-router-dom";
 
 const ReservationConfirm = () => {
   const [activeCard, setActiveCard] = useState(1);
@@ -214,7 +215,12 @@ const ReservationConfirm = () => {
                     </div>
                     <div>
                       <h6 style={{ color: "orangered", fontWeight: "600" }}>
+                       <Link
+                       to="/payment"
+                       >
                         Pay Now
+                       </Link>
+                        
                       </h6>
                     </div>
                     <div style={{ alignItems: "center" }}>

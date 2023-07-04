@@ -18,6 +18,7 @@ import ReservationConfirm from "./pages/ReservationConfirm";
 import TourList from "./pages/TourList";
 import FlightsList from "./pages/FlightsList";
 import axios from "axios";
+import Payment from "./pages/Payment";
 
 function App() {
   const { setUser } = useContext(userContext);
@@ -108,6 +109,7 @@ function App() {
             path="/flights-list"
             element={<FlightsList flights={flights} />}
           />
+          <Route path="/payment" element={<Payment/> }/>
         </Routes>
       )}
     </div>
