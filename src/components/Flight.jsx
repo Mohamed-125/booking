@@ -13,6 +13,8 @@ import Grouped from "./Grouped";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import FlightTakeoffOutlinedIcon from '@mui/icons-material/FlightTakeoffOutlined';
+import DirectionsBusOutlinedIcon from '@mui/icons-material/DirectionsBusOutlined';
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import "./Flight.css";
 import { userContext } from "../context/UserContext";
@@ -115,6 +117,7 @@ const Flight = ({
                 : { backgroundColor: "white" }
             }
           >
+            <FlightTakeoffOutlinedIcon/>
             <h3> Tour with Flight</h3>
           </div>
           <div
@@ -128,6 +131,7 @@ const Flight = ({
                 : { backgroundColor: "white" }
             }
           >
+            <DirectionsBusOutlinedIcon/>
             <h3> Tour with Bus</h3>
           </div>
         </div>
@@ -169,7 +173,8 @@ const Flight = ({
                   inputRef={fromCountryFlightRef}
                   data={flightsCountries}
                   label="From City"
-                />
+                  />
+                  {/* <DirectionsBusOutlinedIcon/> */}
                 <Grouped
                   className="d-flex"
                   inputRef={toCountryFlightRef}
